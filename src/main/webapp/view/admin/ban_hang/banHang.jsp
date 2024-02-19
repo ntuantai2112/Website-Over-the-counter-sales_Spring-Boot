@@ -17,6 +17,25 @@
             integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
             crossorigin="anonymous"></script>
 
+
+<%--    <link rel="apple-touch-icon" href="../assets/img/apple-icon.png">--%>
+<%--    <link rel="shortcut icon" type="image/x-icon" href="../assets/img/favicon.ico">--%>
+
+<%--    <link rel="stylesheet" href="../assets/css/bootstrap.min.css">--%>
+<%--    <link rel="stylesheet" href="../assets/css/templatemo.css">--%>
+<%--    <link rel="stylesheet" href="../assets/css/custom.css">--%>
+
+<%--    <!-- Load fonts style after rendering the layout styles -->--%>
+<%--    <link rel="stylesheet"--%>
+<%--          href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;200;300;400;500;700;900&display=swap">--%>
+<%--    <link rel="stylesheet" href="../assets/css/fontawesome.min.css">--%>
+
+<%--    <!-- Slick -->--%>
+<%--    <link rel="stylesheet" type="text/css" href="../assets/css/slick.min.css">--%>
+<%--    <link rel="stylesheet" type="text/css" href="../assets/css/slick-theme.css">--%>
+
+
+
     <title>Sell</title>
 </head>
 <body>
@@ -127,7 +146,7 @@
                                                <td>${hd.trangThai == 0 ? "Chờ Thanh Toán" : "Đã Thanh Toán" }</td>
                                                <td>
                                                    <a href="/ban-hang/detail/${hd.id}"><button type="button" class="btn btn-primary">Chọn</button></a>
-                                                   <a href="/ban-hang/delete-bill/${hd.id}"><button type="button" class="btn btn-primary">Delete</button></a>
+<%--                                                   <a href="/ban-hang/delete-bill/${hd.id}"><button type="button" class="btn btn-primary">Delete</button></a>--%>
                                                </td>
                                            </tr>
 
@@ -147,6 +166,17 @@
 
                            </div>
                    </div>
+
+
+
+<%--    Cảnh báo về số lượng--%>
+            <c:if test="${not empty errNumber}">
+                <div class="alert alert-warning">
+                    <strong> ${errNumber}</strong>
+                </div>
+            </c:if>
+
+
 
                    <div class="card mb-4">
                        <div class="card-header">Giỏ Hàng</div>
@@ -171,7 +201,27 @@
                                        <td>${loop.index + 1}</td>
                                        <td>${hoaDonChiTiet.idSanPhamChiTiet.idSanPham.ma}</td>
                                        <td>${hoaDonChiTiet.idSanPhamChiTiet.idSanPham.ten}</td>
-                                       <td><input type="number" value="${hoaDonChiTiet.soLuong}"></td>
+                                       <td>
+                                           <ul class="list-inline pb-3">
+
+                                               <li class="list-inline-item">
+                                                   <a href="/ban-hang/tru-so-luong/${hoaDonChiTiet.idSanPhamChiTiet.id}">
+                                                        <span class="btn btn-success" id="btn-minus">-</span>
+                                                   </a>
+                                               </li>
+                                               <li class="list-inline-item"><span class="badge bg-secondary"
+                                                                                  id="var-value">${hoaDonChiTiet.soLuong}</span></li>
+                                               <li class="list-inline-item">
+                                                   <a href="/ban-hang/cong-so-luong/${hoaDonChiTiet.idSanPhamChiTiet.id}">
+                                                            <span class="btn btn-success" id="btn-plus">+</span>
+                                                   </a>
+                                               </li>
+                                           </ul>
+
+<%--                                            <a href=""><button></button></a>--%>
+
+<%--                                           <input type="number" value="${hoaDonChiTiet.soLuong}">--%>
+                                       </td>
                                        <td>${hoaDonChiTiet.donGia}</td>
                                        <td>${hoaDonChiTiet.soLuong * hoaDonChiTiet.donGia}</td>
                                        <td>
@@ -301,21 +351,21 @@
                                                   readonly/>
                                        </div>
                                    </div>
-                                   <div class="row mb-3">
-                                       <label class="col-sm-4 col-form-label">Tiền khách đưa</label>
-                                       <div class="col-sm-6">
-                                           <input id="tienKhachDua" class="form-control" type="number" required>
-                                       </div>
-                                       <i id="calculateChangeButton" class=" col-sm-2 bi bi-chevron-double-down"
-                                          style="font-size: 20px" onclick="calculateChange()"></i>
-                                   </div>
+<%--                                   <div class="row mb-3">--%>
+<%--                                       <label class="col-sm-4 col-form-label">Tiền khách đưa</label>--%>
+<%--                                       <div class="col-sm-6">--%>
+<%--                                           <input id="tienKhachDua" class="form-control" type="number" required>--%>
+<%--                                       </div>--%>
+<%--                                       <i id="calculateChangeButton" class=" col-sm-2 bi bi-chevron-double-down"--%>
+<%--                                          style="font-size: 20px" onclick="calculateChange()"></i>--%>
+<%--                                   </div>--%>
 
-                                   <div class="row mb-3">
-                                       <label class="col-sm-4 col-form-label">Trả lại</label>
-                                       <div class="col-sm-8">
-                                           <input id="tienTraLai" type="number" class="form-control" required>
-                                       </div>
-                                   </div>
+<%--                                   <div class="row mb-3">--%>
+<%--                                       <label class="col-sm-4 col-form-label">Trả lại</label>--%>
+<%--                                       <div class="col-sm-8">--%>
+<%--                                           <input id="tienTraLai" type="number" class="form-control" required>--%>
+<%--                                       </div>--%>
+<%--                                   </div>--%>
                                    <div class="row mb-3 mt-4 justify-content-end text-end">
                                        <div class="col-sm-10">
                                            <button type="submit" class="btn btn-success ">THANH TOÁN</button>

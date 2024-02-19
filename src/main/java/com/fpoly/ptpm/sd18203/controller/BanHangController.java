@@ -59,7 +59,7 @@ public class BanHangController {
                        RedirectAttributes redirectAttributes) {
 
         int page = reqParam.orElse(0);
-        Pageable p = PageRequest.of(page, 5);
+        Pageable p = PageRequest.of(page, 10);
         model.addAttribute("listHD", this.hoaDonRepository.findAllByTrangThai(this.hoaDonRepository.INACTIVE));
         Page<SanPhamChiTiet> pageSanPhamChiTiet = this.sanPhamChiTietRepository.findByTrangThai(SanPhamRepository.ACTIVE, p);
         model.addAttribute("pageSanPhamChiTiet", pageSanPhamChiTiet);
@@ -207,9 +207,9 @@ public class BanHangController {
         UserInfo userInfo = new UserInfo();
         Integer idHoaDon = userInfo.idHoaDon;
 
-//        if (idHoaDon == null || idHoaDon){
-//            model.addAttribute("errBillNull","Vui lòng chọn hóa đơn muốn thêm sản phẩm");
-//        }
+        if (idHoaDon == null || idHoaDon == -1) {
+            model.addAttribute("errBillNull", "Vui lòng chọn hóa đơn muốn thêm sản phẩm");
+        }
 
         // Lấy hoặc tạo mới đối tượng HoaDon
         hoaDon = this.hoaDonRepository.findById(idHoaDon).orElseGet(() -> {
@@ -293,7 +293,14 @@ public class BanHangController {
                 // Thay đổi cách tính thành phép nhân của BigDecimal
                 BigDecimal thanhTien = donGia.multiply(BigDecimal.valueOf(soLuong));
                 tongTien = tongTien.add(thanhTien);
-//                model.addAttribute("soLuong", hdct.getSoLuong());
+
+
+                if (soLuong  < 1 || soLuong  == 0) {
+                    System.out.println("Lỗi số lượng");
+                    model.addAttribute("errNumber", "Số lượng tối thiểu trong giỏ hàng phải là 1");
+                    break;
+                }
+
 
             }
             model.addAttribute("tongTien", tongTien);
@@ -307,25 +314,25 @@ public class BanHangController {
     }
 
 
-//    PHương thức thanh toán
-@PostMapping("/thanh-toan/{idHD}")
-public String thanhToan(@PathVariable("idHD") Integer idHoaDon,
+    //    PHương thức thanh toán
+    @PostMapping("/thanh-toan/{idHD}")
+    public String thanhToan(@PathVariable("idHD") Integer idHoaDon,
 
-                        @ModelAttribute("idKhachHang") Integer idKhachHang,
-                        RedirectAttributes redirectAttributes) {
+                            @ModelAttribute("idKhachHang") Integer idKhachHang,
+                            RedirectAttributes redirectAttributes) {
 
-    // 1. Xác thực dữ liệu (nếu cần)
-    // 2. Lấy thông tin hóa đơn từ cơ sở dữ liệu
-    HoaDon hoaDon = hoaDonRepository.findById(idHoaDon).orElse(null);
-    HoaDonChiTiet hoaDonChiTiet = hoaDonChiTietRepository.findById(idHoaDon).orElse(null);
+        // 1. Xác thực dữ liệu (nếu cần)
+        // 2. Lấy thông tin hóa đơn từ cơ sở dữ liệu
+        HoaDon hoaDon = hoaDonRepository.findById(idHoaDon).orElse(null);
+        HoaDonChiTiet hoaDonChiTiet = hoaDonChiTietRepository.findById(idHoaDon).orElse(null);
 
-    // Xử lý khi không tìm thấy hóa đơn
-    if (hoaDon == null) {
-        redirectAttributes.addFlashAttribute("errorMessageBill", "Không tìm thấy hóa đơn");
-        return "redirect:/ban-hang/detail/" + idHoaDon;
-    }
+        // Xử lý khi không tìm thấy hóa đơn
+        if (hoaDon == null) {
+            redirectAttributes.addFlashAttribute("errorMessageBill", "Không tìm thấy hóa đơn");
+            return "redirect:/ban-hang/detail/" + idHoaDon;
+        }
 
-    // 3. Thực hiện thanh toán
+        // 3. Thực hiện thanh toán
 //    BigDecimal tongTien = hoaDonChiTiet.get();
 //    if (tienKhachDua.compareTo(tongTien) < 0) {
 //        // Xử lý khi số tiền khách hàng đưa không đủ
@@ -333,19 +340,19 @@ public String thanhToan(@PathVariable("idHD") Integer idHoaDon,
 //        return "redirect:/ban-hang/detail/" + idHoaDon;
 //    }
 
-    // 4. Cập nhật trạng thái hóa đơn trong cơ sở dữ liệu
-    hoaDon.setTrangThai(HoaDonRepository.ACTIVE);
-    KhachHang khachHang = this.khachHangRepository.findById(idKhachHang).orElseGet(null);
-    hoaDon.setIdKhachHang(khachHang);
-    hoaDonRepository.save(hoaDon);
+        // 4. Cập nhật trạng thái hóa đơn trong cơ sở dữ liệu
+        hoaDon.setTrangThai(HoaDonRepository.ACTIVE);
+        KhachHang khachHang = this.khachHangRepository.findById(idKhachHang).orElseGet(null);
+        hoaDon.setIdKhachHang(khachHang);
+        hoaDonRepository.save(hoaDon);
 
-    // 5. Chuyển hướng và hiển thị kết quả
-    redirectAttributes.addFlashAttribute("successMessage", "Thanh toán thành công!");
-    return "redirect:/ban-hang/sell";
-}
+        // 5. Chuyển hướng và hiển thị kết quả
+        redirectAttributes.addFlashAttribute("successMessage", "Thanh toán thành công!");
+        return "redirect:/ban-hang/sell";
+    }
 
 
-//    Chức năng xóa sản phẩm khỏi giỏ hàng
+    //    Chức năng xóa sản phẩm khỏi giỏ hàng
     @GetMapping("/gio-hang/remove-from-cart/{idSPCT}")
     public String deleteProductToCart(@PathVariable("idSPCT") int idSPCT) {
 
@@ -371,9 +378,78 @@ public String thanhToan(@PathVariable("idHD") Integer idHoaDon,
     }
 
 
+    //    Chức năng cập nhat so luong
+    @GetMapping("tru-so-luong/{idSPCT}")
+    public String minusQuantity(Model model,
+                                @PathVariable("idSPCT") int idSPCT) {
+        UserInfo userInfo = new UserInfo();
+
+        // Lấy ra thông tin hóa đơn hiện tại của người dùng
+        HoaDon hoaDon = this.hoaDonRepository.findById(userInfo.idHoaDon).orElse(null);
+        // Lấy ra thông tin chi tiết sản phẩm để xóa
+        SanPhamChiTiet sanPhamChiTiet = this.sanPhamChiTietRepository.findById(idSPCT).orElse(null);
+        // Tìm  chi tiết hóa đơn chứa sản phẩm
+        HoaDonChiTiet hoaDonChiTiet = this.hoaDonChiTietRepository.findByHoaDonAndIdSanPhamChiTiet(hoaDon, sanPhamChiTiet);
+
+        if (hoaDonChiTiet != null) {
+            // Số lượng hiện tại trong hóa đơn
+            int soLuongTrongHD = hoaDonChiTiet.getSoLuong();
+            // Kiểm tra nếu số lượng trong hóa đơn là 1 thì hiển thị lỗi
+            if (soLuongTrongHD == 1) {
+                model.addAttribute("errNumber", "Số lượng sản phẩm không thể nhỏ hơn 1.");
+            } else {
+                // Giảm số lượng trong hóa đơn đi 1
+                hoaDonChiTiet.setSoLuong(soLuongTrongHD - 1);
+                // Cập nhật lại số lượng sản phẩm trong bảng sản phẩm
+                int soLuongHienTai = sanPhamChiTiet.getSoLuong();
+                sanPhamChiTiet.setSoLuong(soLuongHienTai + 1); // Trả lại số lượng vào chi tiết sản phẩm trong kho
+                this.sanPhamChiTietRepository.save(sanPhamChiTiet);
+                // Nếu số lượng sau khi giảm là 0 thì xóa khỏi giỏ hàng
+                if (soLuongTrongHD - 1 == 0) {
+                    this.hoaDonChiTietRepository.delete(hoaDonChiTiet);
+                } else {
+                    this.hoaDonChiTietRepository.save(hoaDonChiTiet);
+                }
+            }
+        }
 
 
+        return "redirect:/ban-hang/detail/" + userInfo.idHoaDon;
+    }
 
+
+    @GetMapping("cong-so-luong/{idSPCT}")
+    public String countQuantity(Model model,
+                                @PathVariable("idSPCT") int idSPCT) {
+        UserInfo userInfo = new UserInfo();
+
+        // Lấy ra thông tin hóa đơn hiện tại của người dùng
+        HoaDon hoaDon = this.hoaDonRepository.findById(userInfo.idHoaDon).orElse(null);
+        // Lấy ra thông tin chi tiết sản phẩm để xóa
+        SanPhamChiTiet sanPhamChiTiet = this.sanPhamChiTietRepository.findById(idSPCT).orElse(null);
+        // Tìm  chi tiết hóa đơn chứa sản phẩm
+        HoaDonChiTiet hoaDonChiTiet = this.hoaDonChiTietRepository.findByHoaDonAndIdSanPhamChiTiet(hoaDon, sanPhamChiTiet);
+
+        if (hoaDonChiTiet != null) {
+            // Số lượng hiện tại trong hóa đơn
+            int soLuongTrongHD = hoaDonChiTiet.getSoLuong();
+            // Kiểm tra nếu số lượng trong hóa đơn là 1 thì hiển thị lỗi
+            if (soLuongTrongHD > sanPhamChiTiet.getSoLuong()) {
+                model.addAttribute("errNumber", "Số lượng sản phẩm trong kho không đủ");
+            } else {
+                // Giảm số lượng trong hóa đơn đi 1
+                hoaDonChiTiet.setSoLuong(soLuongTrongHD + 1);
+                // Cập nhật lại số lượng sản phẩm trong bảng sản phẩm
+                int soLuongHienTai = sanPhamChiTiet.getSoLuong();
+                sanPhamChiTiet.setSoLuong(soLuongHienTai - 1); // Trả lại số lượng vào chi tiết sản phẩm trong kho
+                this.sanPhamChiTietRepository.save(sanPhamChiTiet);
+                this.hoaDonChiTietRepository.save(hoaDonChiTiet);
+            }
+        }
+
+
+        return "redirect:/ban-hang/detail/" + userInfo.idHoaDon;
+    }
 
 
 }

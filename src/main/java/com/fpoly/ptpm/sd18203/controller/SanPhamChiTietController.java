@@ -53,7 +53,7 @@ public class SanPhamChiTietController {
 
         int page = pageParam.orElse(0);
         Pageable p = PageRequest.of(page,10);
-        Page<SanPhamChiTiet> pageSanPhamChiTiet= this.sanPhamChiTietRepository.findAll(p);
+        Page<SanPhamChiTiet> pageSanPhamChiTiet= this.sanPhamChiTietRepository.findByTrangThai(this.sanPhamChiTietRepository.ACTIVE,p);
         model.addAttribute("pageSanPhamChiTiet",pageSanPhamChiTiet);
 //        model.addAttribute("listProductDetail", sanPhamChiTietRepository.findAll());
         return "admin/san_pham_chi_tiet/showProductDetail";
@@ -71,10 +71,9 @@ public class SanPhamChiTietController {
     }
 
     @PostMapping("create-product-detail")
-    public String createProductDetail( Model model,
-            @Valid
-            @ModelAttribute("productDetail") SanPhamChiTietDTO sanPhamChiTietDTO,
-            BindingResult result) {
+    public String createProductDetail(Model model,
+                                      @Valid @ModelAttribute("productDetail") SanPhamChiTietDTO sanPhamChiTietDTO,
+                                      BindingResult result) {
 
         if (result.hasErrors()) {
             System.out.println("Lỗi");
@@ -84,31 +83,37 @@ public class SanPhamChiTietController {
             return "admin/san_pham_chi_tiet/create";
         }
 
-//        if(sanPhamChiTietDTO.getDonGia() == null ){
-//            return "admin/san_pham_chi_tiet/create";
-//        }
+        // Check if the product detail already exists for the given product, color, and size
 
+        SanPhamChiTiet existingDetail = this.sanPhamChiTietRepository.findBySanPhamAndMauSacAndKichThuoc(
+                sanPhamChiTietDTO.getIdSanPham(), sanPhamChiTietDTO.getIdMauSac(), sanPhamChiTietDTO.getIdKichThuoc());
 
-        SanPhamChiTiet sanPhamChiTiet = new SanPhamChiTiet();
-        sanPhamChiTiet.setMaSPCT(sanPhamChiTietDTO.getMaSPCT());
-        sanPhamChiTiet.setDonGia(sanPhamChiTietDTO.getDonGia());
-        sanPhamChiTiet.setSoLuong(sanPhamChiTietDTO.getSoLuong());
-        sanPhamChiTiet.setTrangThai(sanPhamChiTietDTO.getTrangThai());
+        if (existingDetail != null) {
+            // If the detail exists, update its quantity
+            existingDetail.setSoLuong(existingDetail.getSoLuong() + sanPhamChiTietDTO.getSoLuong());
+            this.sanPhamChiTietRepository.save(existingDetail);
+        } else {
+            // If the detail doesn't exist, create a new one
+            SanPhamChiTiet sanPhamChiTiet = new SanPhamChiTiet();
+            sanPhamChiTiet.setMaSPCT(sanPhamChiTietDTO.getMaSPCT());
+            sanPhamChiTiet.setDonGia(sanPhamChiTietDTO.getDonGia());
+            sanPhamChiTiet.setSoLuong(sanPhamChiTietDTO.getSoLuong());
+            sanPhamChiTiet.setTrangThai(sanPhamChiTietDTO.getTrangThai());
 
-        // Retrieve and set the selected MauSac, KichThuoc, and SanPham objects
-        MauSac mauSac = this.mauSacRepository.findById(sanPhamChiTietDTO.getIdMauSac()).get();
-        KichThuoc kichThuoc = this.kichThuocRepository.findById(sanPhamChiTietDTO.getIdKichThuoc()).get();
-        SanPham sanPham = this.sanPhamRepository.findById(sanPhamChiTietDTO.getIdSanPham()).get();
+            // Retrieve and set the selected MauSac, KichThuoc, and SanPham objects
+            MauSac mauSac = this.mauSacRepository.findById(sanPhamChiTietDTO.getIdMauSac()).get();
+            KichThuoc kichThuoc = this.kichThuocRepository.findById(sanPhamChiTietDTO.getIdKichThuoc()).get();
+            SanPham sanPham = this.sanPhamRepository.findById(sanPhamChiTietDTO.getIdSanPham()).get();
 
             sanPhamChiTiet.setIdMauSac(mauSac);
             sanPhamChiTiet.setIdKichThuoc(kichThuoc);
             sanPhamChiTiet.setIdSanPham(sanPham);
 
-        // Save the SanPhamChiTiet object
-        this.sanPhamChiTietRepository.save(sanPhamChiTiet);
+            // Save the SanPhamChiTiet object
+            this.sanPhamChiTietRepository.save(sanPhamChiTiet);
+        }
 
         return "redirect:/san-pham-chi-tiet/show-product-detail";
-
     }
 
     @GetMapping("/edit-product-detail/{id}")
