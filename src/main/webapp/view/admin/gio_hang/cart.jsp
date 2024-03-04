@@ -75,7 +75,7 @@
 <div class="container">
 
 
-    <div class="card mt-5" >
+    <div class="card mt-5">
 
         <div class="card-header">
             <h1 class="text-center">Shoppring Cart</h1>
@@ -114,13 +114,14 @@
                             <td>${entry.value.soLuong * entry.value.donGia}</td>
                             <td>
                                 <a href="/gio-hang/remove-from-cart/${entry.value.sanPhamChiTietDTO.product.idSanPham}">
-                                    <button type="button" class="btn btn-danger" onclick="return alert('Are you sure you want to delete this product?')">Remove</button>
+                                    <button type="button" class="btn btn-danger"
+                                            onclick="return alert('Are you sure you want to delete this product?')">
+                                        Remove
+                                    </button>
                                 </a>
                             </td>
                         </tr>
                     </c:forEach>
-
-
 
 
                     </tbody>
@@ -133,7 +134,9 @@
 
 
             <a href="/gio-hang/clear-cart">
-                <button type="button" class="btn btn-danger" onclick="return confirm('Are you sure you want to delete this cart?')">Clear Cart</button>
+                <button type="button" class="btn btn-danger"
+                        onclick="return confirm('Are you sure you want to delete this cart?')">Clear Cart
+                </button>
             </a>
 
             <a href="/hoa-don/add-order">
@@ -141,11 +144,6 @@
             </a>
         </div>
     </div>
-
-
-
-
-
 
 
 </div>

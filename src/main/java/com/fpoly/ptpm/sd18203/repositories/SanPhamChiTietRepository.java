@@ -12,11 +12,12 @@ import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public interface SanPhamChiTietRepository extends JpaRepository<SanPhamChiTiet,Integer> {
+public interface SanPhamChiTietRepository extends JpaRepository<SanPhamChiTiet, Integer> {
 
 
-    public static  final  int ACTIVE = 1;
-    public static  final  int INACTIVE = 0;
+    public static final int ACTIVE = 1;
+    public static final int INACTIVE = 0;
+
     public Page<SanPhamChiTiet> findByTrangThai(int trangThai, Pageable pageable);
 
     @Query("SELECT spct FROM SanPhamChiTiet spct " +
@@ -26,5 +27,6 @@ public interface SanPhamChiTietRepository extends JpaRepository<SanPhamChiTiet,I
     SanPhamChiTiet findBySanPhamAndMauSacAndKichThuoc(@Param("sanPhamId") Integer sanPhamId,
                                                       @Param("mauSacId") Integer mauSacId,
                                                       @Param("kichThuocId") Integer kichThuocId);
+
     Page<SanPhamChiTiet> findAll(Pageable pageable);
 }

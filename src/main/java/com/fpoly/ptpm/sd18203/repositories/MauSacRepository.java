@@ -10,12 +10,13 @@ import org.springframework.stereotype.Repository;
 import java.util.List;
 
 @Repository
-public interface MauSacRepository extends JpaRepository<MauSac,Integer> {
+public interface MauSacRepository extends JpaRepository<MauSac, Integer> {
 
-    public static  final  int ACTIVE = 1;
-    public static  final  int INACTIVE = 0;
+    public static final int ACTIVE = 1;
+    public static final int INACTIVE = 0;
 
     public Page<MauSac> findByTrangThai(int trangThai, Pageable pageable);
+
     Page<MauSac> findAll(Pageable pageable);
 
 }

@@ -27,19 +27,18 @@ import java.util.*;
 public class SanPhamController {
 
 
-
     @Autowired
     private SanPhamRepository sanPhamRepository;
 
 
     @GetMapping("show-product")
-    public String getProduct(Model model,   @RequestParam("page") Optional<Integer> pageParam) {
+    public String getProduct(Model model, @RequestParam("page") Optional<Integer> pageParam) {
 
 
         int page = pageParam.orElse(0);
-        Pageable p = PageRequest.of(page,10);
-        Page<SanPham> pageSanPham= this.sanPhamRepository.findAll(p);
-        model.addAttribute("pageSanPham",pageSanPham);
+        Pageable p = PageRequest.of(page, 10);
+        Page<SanPham> pageSanPham = this.sanPhamRepository.findAll(p);
+        model.addAttribute("pageSanPham", pageSanPham);
 
 //        model.addAttribute("pageSanPham", sanPhamRepository.findAll());
         return "admin/san_pham/indexSP";
@@ -79,7 +78,7 @@ public class SanPhamController {
     }
 
 
-//    Hàm xử lý thêm mới sản phẩm
+    //    Hàm xử lý thêm mới sản phẩm
     @PostMapping("/create-product")
     public String createProduct(
             @Valid @ModelAttribute("product") SanPhamDTO req,

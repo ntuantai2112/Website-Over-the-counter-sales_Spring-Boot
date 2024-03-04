@@ -30,7 +30,6 @@ public class KhachHangController {
     private KhachHangRepository khachHangRepository;
 
 
-
     @GetMapping("show-customer")
     public String getAllCustomer(Model model,
                                  @RequestParam("page") Optional<Integer> pageParam
@@ -62,7 +61,7 @@ public class KhachHangController {
             return "admin/khach_hang/create";
         }
 
-        KhachHang khachHang = new KhachHang(req.getMa(),req.getTen(),req.getSdt(),(req.getTrangThai()));
+        KhachHang khachHang = new KhachHang(req.getMa(), req.getTen(), req.getSdt(), (req.getTrangThai()));
 
         this.khachHangRepository.save(khachHang);
         return "redirect:/khach-hang/show-customer";
@@ -71,7 +70,7 @@ public class KhachHangController {
 
     @GetMapping("delete-customer/{id}")
     public String deleteCustomer(Model model, @PathVariable(name = "id") int idCustomer) {
-       this.khachHangRepository.deleteById(idCustomer);
+        this.khachHangRepository.deleteById(idCustomer);
         return "redirect:/khach-hang/show-customer";
     }
 
@@ -90,10 +89,9 @@ public class KhachHangController {
     public String editCustomer(
             @Valid @ModelAttribute("customer") KhachHangDTO khachHangDTO,
             BindingResult result,
-            @PathVariable(name = "id") KhachHang khachHang)
-    {
+            @PathVariable(name = "id") KhachHang khachHang) {
 
-        if(result.hasErrors()){
+        if (result.hasErrors()) {
             return "admin/khach_hang/edit";
         }
 

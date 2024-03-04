@@ -28,25 +28,21 @@ public class NhanVienController {
     private NhanVienRepository nhanVienRepository;
 
 
-
-
     @GetMapping("show-employee")
     public String getEmployee(Model model,
-                              @RequestParam("page")Optional<Integer> pageParam
+                              @RequestParam("page") Optional<Integer> pageParam
 
-                              ) {
+    ) {
 
         int page = pageParam.orElse(0);
-        Pageable p = PageRequest.of(page,10);
+        Pageable p = PageRequest.of(page, 10);
         Page<NhanVien> pageNhanVien = nhanVienRepository.findAll(p);
 
 
-
-        model.addAttribute("pageNhanVien",pageNhanVien);
+        model.addAttribute("pageNhanVien", pageNhanVien);
 
         return "admin/nhan_vien/indexNV";
     }
-
 
 
     @GetMapping("create-employee")
@@ -60,10 +56,9 @@ public class NhanVienController {
     @PostMapping("/create-employee")
     public String createEmployee(
             @Valid @ModelAttribute("employee") NhanVienDTO req,
-                           BindingResult result)
-    {
+            BindingResult result) {
 
-        if(result.hasErrors()){
+        if (result.hasErrors()) {
             return "admin/nhan_vien/create";
         }
         NhanVien nhanVien = new NhanVien();
@@ -79,7 +74,7 @@ public class NhanVienController {
 
     @GetMapping("delete-employee/{id}")
     public String deleteEmployee(Model model, @PathVariable(name = "id") int idEmployee) {
-       this.nhanVienRepository.deleteById(idEmployee);
+        this.nhanVienRepository.deleteById(idEmployee);
         return "redirect:/nhan-vien/show-employee";
     }
 
@@ -99,7 +94,7 @@ public class NhanVienController {
             BindingResult result,
             @PathVariable(name = "id") NhanVien nhanVien) {
 
-        if(result.hasErrors()){
+        if (result.hasErrors()) {
             return "admin/nhan_vien/edit";
         }
 
@@ -111,9 +106,6 @@ public class NhanVienController {
         this.nhanVienRepository.save(nhanVien);
         return "redirect:/nhan-vien/show-employee";
     }
-
-
-
 
 
 }

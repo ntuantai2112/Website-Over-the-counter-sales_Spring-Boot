@@ -10,12 +10,14 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public interface NhanVienRepository extends JpaRepository<NhanVien,Integer> {
+public interface NhanVienRepository extends JpaRepository<NhanVien, Integer> {
 
 
-    public static  final  int ACTIVE = 1;
-    public static  final  int INACTIVE = 0;
+    public static final int ACTIVE = 1;
+    public static final int INACTIVE = 0;
+
     public Page<NhanVien> findByTrangThai(int trangThai, Pageable pageable);
+
     Page<NhanVien> findAll(Pageable pageable);
 
 }

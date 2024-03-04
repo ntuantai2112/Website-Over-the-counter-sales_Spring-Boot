@@ -11,13 +11,15 @@ import org.springframework.stereotype.Repository;
 import java.util.List;
 
 @Repository
-public interface HoaDonRepository extends JpaRepository<HoaDon,Integer> {
+public interface HoaDonRepository extends JpaRepository<HoaDon, Integer> {
 
 
-    public static  final  int ACTIVE = 1;
-    public static  final  int INACTIVE = 0;
+    public static final int ACTIVE = 1;
+    public static final int INACTIVE = 0;
 
     public Page<HoaDon> findByTrangThai(int trangThai, Pageable pageable);
+
     public List<HoaDon> findAllByTrangThai(int trangThai);
+
     Page<HoaDon> findAll(Pageable pageable);
 }

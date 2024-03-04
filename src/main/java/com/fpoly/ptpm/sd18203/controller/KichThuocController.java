@@ -46,7 +46,7 @@ public class KichThuocController {
     public String createSize(Model model) {
 
         KichThuocDTO kichThuocDTO = new KichThuocDTO();
-        model.addAttribute("size",kichThuocDTO );
+        model.addAttribute("size", kichThuocDTO);
         return "admin/ql_kichthuoc/create";
     }
 
@@ -54,8 +54,7 @@ public class KichThuocController {
     @PostMapping("create-size")
     public String createSize(
             @Valid @ModelAttribute("size") KichThuocDTO req,
-            BindingResult result)
-    {
+            BindingResult result) {
 
         if (result.hasErrors()) {
             System.out.println("Lỗi");
@@ -63,8 +62,7 @@ public class KichThuocController {
         }
 
 
-
-        KichThuoc  kichThuoc  = new KichThuoc(req.getMa(),req.getTen(),Integer.parseInt(req.getTrangThai()));
+        KichThuoc kichThuoc = new KichThuoc(req.getMa(), req.getTen(), Integer.parseInt(req.getTrangThai()));
         this.kichThuocRepository.save(kichThuoc);
         return "redirect:/kich-thuoc/show-size";
     }
@@ -83,8 +81,7 @@ public class KichThuocController {
     @GetMapping("edit-size/{id}")
     public String editSize(
             Model model,
-            @PathVariable(name = "id") KichThuoc kichThuoc)
-    {
+            @PathVariable(name = "id") KichThuoc kichThuoc) {
         model.addAttribute("size", kichThuoc);
         return "admin/ql_kichthuoc/edit";
     }

@@ -59,9 +59,11 @@
                             <li><a class="dropdown-item" href="/san-pham/show-product">Manager Product</a></li>
                             <li><a class="dropdown-item" href="/nhan-vien/show-employee">Manager Employee</a></li>
                             <li><a class="dropdown-item" href="/khach-hang/show-customer">Manager Customer</a></li>
-                            <li><a class="dropdown-item" href="/san-pham-chi-tiet/show-product-detail">Manager Product Detail</a></li>
+                            <li><a class="dropdown-item" href="/san-pham-chi-tiet/show-product-detail">Manager Product
+                                Detail</a></li>
                             <li><a class="dropdown-item" href="/hoa-don/show-bill">Manager Bill</a></li>
-                            <li><a class="dropdown-item" href="/hoa-don-chi-tiet/show-billDetail">Manager Bill Detail</a></li>
+                            <li><a class="dropdown-item" href="/hoa-don-chi-tiet/show-billDetail">Manager Bill
+                                Detail</a></li>
                             <li>
                                 <hr class="dropdown-divider">
                             </li>
@@ -80,7 +82,6 @@
         </div>
     </nav>
 </div>
-
 
 
 <%--Body--%>
@@ -116,7 +117,6 @@
         <tbody>
 
 
-
         <c:forEach items="${pageHoaDon.content}" varStatus="hoaDon" var="hd">
             <tr>
                 <th scope="row">${hoaDon.index+1}</th>
@@ -124,7 +124,7 @@
                 <td>${hd.idNhanVien.ten}</td>
                 <td>${hd.idKhachHang.ten}</td>
                 <td>
-                    <fmt:formatDate value="${hd.ngayMuaHang}" pattern="dd/MM/yyyy " />
+                    <fmt:formatDate value="${hd.ngayMuaHang}" pattern="dd/MM/yyyy "/>
                 </td>
                 <td>${hd.trangThai == 0 ? "Inactive" : "Active" }</td>
                 <div class="float-end">
@@ -133,7 +133,9 @@
                             <button type="button" class="btn btn-success">Edit</button>
                         </a>
                         <a href="/hoa-don/delete-bill/${hd.id}">
-                            <button type="button" class="btn btn-danger" onclick="return confirm('Are you sure you want to delete this Bill?')">Remove</button>
+                            <button type="button" class="btn btn-danger"
+                                    onclick="return confirm('Are you sure you want to delete this Bill?')">Remove
+                            </button>
                         </a>
                         <a href="/hoa-don/bill-detail/${hd.id}">
                             <button type="button" class="btn btn-warning">Detail</button>
@@ -147,23 +149,24 @@
     </table>
 
 
-        <div>
-            <nav aria-label="Page navigation example">
-                <ul class="pagination">
-                    <li class="page-item">
-                        <c:if test="${pageHoaDon.number > 0}">
-                            <a class="page-link" href="/hoa-don/show-bill?page=${pageHoaDon.number - 1}">Previous</a>
-                        </c:if>
-                    </li>
-                    <li class="page-item"><a class="page-link disabled active-page" onclick="return false;"   href="#">${pageHoaDon.number + 1}</a></li>
-                    <li class="page-item">
-                        <c:if test="${pageHoaDon.number + 1 < pageHoaDon.totalPages}">
-                            <a class="page-link" href="/hoa-don/show-bill?page=${pageHoaDon.number + 1}">Next</a>
-                        </c:if>
-                    </li>
-                </ul>
-            </nav>
-        </div>
+    <div>
+        <nav aria-label="Page navigation example">
+            <ul class="pagination">
+                <li class="page-item">
+                    <c:if test="${pageHoaDon.number > 0}">
+                        <a class="page-link" href="/hoa-don/show-bill?page=${pageHoaDon.number - 1}">Previous</a>
+                    </c:if>
+                </li>
+                <li class="page-item"><a class="page-link disabled active-page" onclick="return false;"
+                                         href="#">${pageHoaDon.number + 1}</a></li>
+                <li class="page-item">
+                    <c:if test="${pageHoaDon.number + 1 < pageHoaDon.totalPages}">
+                        <a class="page-link" href="/hoa-don/show-bill?page=${pageHoaDon.number + 1}">Next</a>
+                    </c:if>
+                </li>
+            </ul>
+        </nav>
+    </div>
 </div>
 
 

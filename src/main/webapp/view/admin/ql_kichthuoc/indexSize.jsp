@@ -46,9 +46,11 @@
                             <li><a class="dropdown-item" href="/san-pham/show-product">Manager Product</a></li>
                             <li><a class="dropdown-item" href="/nhan-vien/show-employee">Manager Employee</a></li>
                             <li><a class="dropdown-item" href="/khach-hang/show-customer">Manager Customer</a></li>
-                            <li><a class="dropdown-item" href="/san-pham-chi-tiet/show-product-detail">Manager Product Detail</a></li>
+                            <li><a class="dropdown-item" href="/san-pham-chi-tiet/show-product-detail">Manager Product
+                                Detail</a></li>
                             <li><a class="dropdown-item" href="/hoa-don/show-bill">Manager Bill</a></li>
-                            <li><a class="dropdown-item" href="/hoa-don-chi-tiet/show-billDetail">Manager Bill Detail</a></li>
+                            <li><a class="dropdown-item" href="/hoa-don-chi-tiet/show-billDetail">Manager Bill
+                                Detail</a></li>
                             <li>
                                 <hr class="dropdown-divider">
                             </li>
@@ -90,7 +92,7 @@
             <th scope="col">Ma</th>
             <th scope="col">Ten</th>
             <th scope="col">Trạng Thái</th>
-            <th  colspan="2">Action</th>
+            <th colspan="2">Action</th>
         </tr>
         </thead>
         <tbody>
@@ -108,7 +110,9 @@
                             <button type="button" class="btn btn-success">Edit</button>
                         </a>
                         <a href="/kich-thuoc/delete-size?id=${kt.id}">
-                            <button type="button" class="btn btn-danger" onclick="return confirm('Are you sure you want to delete this size?')">Remove</button>
+                            <button type="button" class="btn btn-danger"
+                                    onclick="return confirm('Are you sure you want to delete this size?')">Remove
+                            </button>
                         </a>
                         <a href="">
                             <button type="button" class="btn btn-warning">Detail</button>
@@ -121,23 +125,24 @@
         </tbody>
     </table>
 
-        <div>
-            <nav aria-label="Page navigation example">
-                <ul class="pagination">
-                    <li class="page-item">
-                        <c:if test="${pageKichThuoc.number > 0}">
-                            <a class="page-link" href="/kich-thuoc/show-size?page=${pageKichThuoc.number - 1}">Previous</a>
-                        </c:if>
-                    </li>
-                    <li class="page-item"><a class="page-link disabled active-page" onclick="return false;"   href="#">${pageKichThuoc.number + 1}</a></li>
-                    <li class="page-item">
-                        <c:if test="${pageKichThuoc.number + 1 < pageKichThuoc.totalPages}">
-                            <a class="page-link" href="/kich-thuoc/show-size?page=${pageData.number + 1}">Next</a>
-                        </c:if>
-                    </li>
-                </ul>
-            </nav>
-        </div>
+    <div>
+        <nav aria-label="Page navigation example">
+            <ul class="pagination">
+                <li class="page-item">
+                    <c:if test="${pageKichThuoc.number > 0}">
+                        <a class="page-link" href="/kich-thuoc/show-size?page=${pageKichThuoc.number - 1}">Previous</a>
+                    </c:if>
+                </li>
+                <li class="page-item"><a class="page-link disabled active-page" onclick="return false;"
+                                         href="#">${pageKichThuoc.number + 1}</a></li>
+                <li class="page-item">
+                    <c:if test="${pageKichThuoc.number + 1 < pageKichThuoc.totalPages}">
+                        <a class="page-link" href="/kich-thuoc/show-size?page=${pageData.number + 1}">Next</a>
+                    </c:if>
+                </li>
+            </ul>
+        </nav>
+    </div>
 </div>
 
 

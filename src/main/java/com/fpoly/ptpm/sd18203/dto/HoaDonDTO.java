@@ -13,7 +13,7 @@ import java.util.Date;
 @AllArgsConstructor
 
 public class HoaDonDTO {
-    private int id;
+    private Integer id;
 
     private Integer idNhanVien;
 

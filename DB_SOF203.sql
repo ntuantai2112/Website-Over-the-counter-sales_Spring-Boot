@@ -19,27 +19,49 @@
 -- ----------------------------
 -- Table structure for HoaDon
 -- ----------------------------
-IF EXISTS (SELECT * FROM sys.all_objects WHERE object_id = OBJECT_ID(N'[dbo].[HoaDon]') AND type IN ('U'))
-	DROP TABLE [dbo].[HoaDon]
-GO
+IF
+EXISTS (SELECT * FROM sys.all_objects WHERE object_id = OBJECT_ID(N'[dbo].[HoaDon]') AND type IN ('U'))
+DROP TABLE [dbo].[HoaDon]
+    GO
 
-CREATE TABLE [dbo].[HoaDon] (
-  [ID] int  NOT NULL,
-  [IdKH] int  NOT NULL,
-  [IdNV] int  NOT NULL,
-  [NgayMuaHang] date  NOT NULL,
-  [TrangThai] int DEFAULT 1 NOT NULL
+CREATE TABLE [dbo].[HoaDon]
+(
+    [
+    ID]
+    int
+    NOT
+    NULL, [
+    IdKH]
+    int
+    NOT
+    NULL, [
+    IdNV]
+    int
+    NOT
+    NULL, [
+    NgayMuaHang]
+    date
+    NOT
+    NULL,
+[
+    TrangThai]
+    int
+    DEFAULT
+    1
+    NOT
+    NULL
 )
-GO
+    GO
 
 ALTER TABLE [dbo].[HoaDon] SET (LOCK_ESCALATION = TABLE)
-GO
+    GO
 
 
 -- ----------------------------
 -- Records of HoaDon
 -- ----------------------------
-BEGIN TRANSACTION
+BEGIN
+TRANSACTION
 GO
 
 INSERT INTO [dbo].[HoaDon] ([ID], [IdKH], [IdNV], [NgayMuaHang], [TrangThai]) VALUES (N'1', N'22', N'31', N'2022-01-15', N'0')
@@ -260,28 +282,47 @@ GO
 -- Table structure for HoaDonChiTiet
 -- ----------------------------
 IF EXISTS (SELECT * FROM sys.all_objects WHERE object_id = OBJECT_ID(N'[dbo].[HoaDonChiTiet]') AND type IN ('U'))
-	DROP TABLE [dbo].[HoaDonChiTiet]
-GO
+DROP TABLE [dbo].[HoaDonChiTiet]
+    GO
 
-CREATE TABLE [dbo].[HoaDonChiTiet] (
-  [ID] int  NOT NULL,
-  [IdHoaDon] int  NOT NULL,
-  [IdSPCT] int  NOT NULL,
-  [SoLuong] int  NOT NULL,
-  [DonGia] float(53)  NOT NULL,
-  [ThoiGian] datetime  NOT NULL,
-  [TrangThai] int DEFAULT 1 NOT NULL
-)
-GO
+CREATE TABLE [dbo].[HoaDonChiTiet]
+(
+    [
+    ID]
+    int
+    NOT
+    NULL, [
+    IdHoaDon]
+    int
+    NOT
+    NULL, [
+    IdSPCT]
+    int
+    NOT
+    NULL, [
+    SoLuong]
+    int
+    NOT
+    NULL, [
+    DonGia]
+    float
+(
+    53
+) NOT NULL,
+    [ThoiGian] datetime NOT NULL,
+    [TrangThai] int DEFAULT 1 NOT NULL
+    )
+    GO
 
 ALTER TABLE [dbo].[HoaDonChiTiet] SET (LOCK_ESCALATION = TABLE)
-GO
+    GO
 
 
 -- ----------------------------
 -- Records of HoaDonChiTiet
 -- ----------------------------
-BEGIN TRANSACTION
+BEGIN
+TRANSACTION
 GO
 
 INSERT INTO [dbo].[HoaDonChiTiet] ([ID], [IdHoaDon], [IdSPCT], [SoLuong], [DonGia], [ThoiGian], [TrangThai]) VALUES (N'1', N'2', N'651', N'2', N'309664', N'2021-12-31 06:58:03.000', N'1')
@@ -652,26 +693,42 @@ GO
 -- Table structure for KhachHang
 -- ----------------------------
 IF EXISTS (SELECT * FROM sys.all_objects WHERE object_id = OBJECT_ID(N'[dbo].[KhachHang]') AND type IN ('U'))
-	DROP TABLE [dbo].[KhachHang]
-GO
+DROP TABLE [dbo].[KhachHang]
+    GO
 
-CREATE TABLE [dbo].[KhachHang] (
-  [ID] int  NOT NULL,
-  [Ma] varchar(255) COLLATE SQL_Latin1_General_CP1_CI_AS  NOT NULL,
-  [Ten] varchar(255) COLLATE SQL_Latin1_General_CP1_CI_AS  NOT NULL,
-  [SDT] varchar(255) COLLATE SQL_Latin1_General_CP1_CI_AS  NOT NULL,
-  [TrangThai] int DEFAULT 1 NOT NULL
-)
-GO
+CREATE TABLE [dbo].[KhachHang]
+(
+    [
+    ID]
+    int
+    NOT
+    NULL, [
+    Ma]
+    varchar
+(
+    255
+) COLLATE SQL_Latin1_General_CP1_CI_AS NOT NULL,
+    [Ten] varchar
+(
+    255
+) COLLATE SQL_Latin1_General_CP1_CI_AS NOT NULL,
+    [SDT] varchar
+(
+    255
+) COLLATE SQL_Latin1_General_CP1_CI_AS NOT NULL,
+    [TrangThai] int DEFAULT 1 NOT NULL
+    )
+    GO
 
 ALTER TABLE [dbo].[KhachHang] SET (LOCK_ESCALATION = TABLE)
-GO
+    GO
 
 
 -- ----------------------------
 -- Records of KhachHang
 -- ----------------------------
-BEGIN TRANSACTION
+BEGIN
+TRANSACTION
 GO
 
 INSERT INTO [dbo].[KhachHang] ([ID], [Ma], [Ten], [SDT], [TrangThai]) VALUES (N'1', N'LP11935', N'Deng Jialun', N'0966374181', N'0')
@@ -982,25 +1039,40 @@ GO
 -- Table structure for KichThuoc
 -- ----------------------------
 IF EXISTS (SELECT * FROM sys.all_objects WHERE object_id = OBJECT_ID(N'[dbo].[KichThuoc]') AND type IN ('U'))
-	DROP TABLE [dbo].[KichThuoc]
-GO
+DROP TABLE [dbo].[KichThuoc]
+    GO
 
-CREATE TABLE [dbo].[KichThuoc] (
-  [ID] int  IDENTITY(1,1) NOT NULL,
-  [Ma] varchar(255) COLLATE SQL_Latin1_General_CP1_CI_AS  NULL,
-  [Ten] varchar(255) COLLATE SQL_Latin1_General_CP1_CI_AS  NULL,
-  [TrangThai] int DEFAULT 1 NOT NULL
-)
-GO
+CREATE TABLE [dbo].[KichThuoc]
+(
+    [
+    ID]
+    int
+    IDENTITY
+(
+    1,
+    1
+) NOT NULL,
+    [Ma] varchar
+(
+    255
+) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
+    [Ten] varchar
+(
+    255
+) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
+    [TrangThai] int DEFAULT 1 NOT NULL
+    )
+    GO
 
 ALTER TABLE [dbo].[KichThuoc] SET (LOCK_ESCALATION = TABLE)
-GO
+    GO
 
 
 -- ----------------------------
 -- Records of KichThuoc
 -- ----------------------------
-BEGIN TRANSACTION
+BEGIN
+TRANSACTION
 GO
 
 SET IDENTITY_INSERT [dbo].[KichThuoc] ON
@@ -1047,25 +1119,40 @@ GO
 -- Table structure for MauSac
 -- ----------------------------
 IF EXISTS (SELECT * FROM sys.all_objects WHERE object_id = OBJECT_ID(N'[dbo].[MauSac]') AND type IN ('U'))
-	DROP TABLE [dbo].[MauSac]
-GO
+DROP TABLE [dbo].[MauSac]
+    GO
 
-CREATE TABLE [dbo].[MauSac] (
-  [ID] int  IDENTITY(1,1) NOT NULL,
-  [Ma] varchar(255) COLLATE SQL_Latin1_General_CP1_CI_AS  NOT NULL,
-  [Ten] varchar(255) COLLATE SQL_Latin1_General_CP1_CI_AS  NOT NULL,
-  [TrangThai] int DEFAULT 1 NOT NULL
-)
-GO
+CREATE TABLE [dbo].[MauSac]
+(
+    [
+    ID]
+    int
+    IDENTITY
+(
+    1,
+    1
+) NOT NULL,
+    [Ma] varchar
+(
+    255
+) COLLATE SQL_Latin1_General_CP1_CI_AS NOT NULL,
+    [Ten] varchar
+(
+    255
+) COLLATE SQL_Latin1_General_CP1_CI_AS NOT NULL,
+    [TrangThai] int DEFAULT 1 NOT NULL
+    )
+    GO
 
 ALTER TABLE [dbo].[MauSac] SET (LOCK_ESCALATION = TABLE)
-GO
+    GO
 
 
 -- ----------------------------
 -- Records of MauSac
 -- ----------------------------
-BEGIN TRANSACTION
+BEGIN
+TRANSACTION
 GO
 
 SET IDENTITY_INSERT [dbo].[MauSac] ON
@@ -1172,27 +1259,46 @@ GO
 -- Table structure for NhanVien
 -- ----------------------------
 IF EXISTS (SELECT * FROM sys.all_objects WHERE object_id = OBJECT_ID(N'[dbo].[NhanVien]') AND type IN ('U'))
-	DROP TABLE [dbo].[NhanVien]
-GO
+DROP TABLE [dbo].[NhanVien]
+    GO
 
-CREATE TABLE [dbo].[NhanVien] (
-  [ID] int  NOT NULL,
-  [Ten] varchar(255) COLLATE SQL_Latin1_General_CP1_CI_AS  NOT NULL,
-  [Ma] varchar(255) COLLATE SQL_Latin1_General_CP1_CI_AS  NOT NULL,
-  [TenDangNhap] varchar(255) COLLATE SQL_Latin1_General_CP1_CI_AS  NOT NULL,
-  [MatKhau] varchar(255) COLLATE SQL_Latin1_General_CP1_CI_AS  NOT NULL,
-  [TrangThai] int DEFAULT 1 NULL
-)
-GO
+CREATE TABLE [dbo].[NhanVien]
+(
+    [
+    ID]
+    int
+    NOT
+    NULL, [
+    Ten]
+    varchar
+(
+    255
+) COLLATE SQL_Latin1_General_CP1_CI_AS NOT NULL,
+    [Ma] varchar
+(
+    255
+) COLLATE SQL_Latin1_General_CP1_CI_AS NOT NULL,
+    [TenDangNhap] varchar
+(
+    255
+) COLLATE SQL_Latin1_General_CP1_CI_AS NOT NULL,
+    [MatKhau] varchar
+(
+    255
+) COLLATE SQL_Latin1_General_CP1_CI_AS NOT NULL,
+    [TrangThai] int DEFAULT 1 NULL
+    )
+    GO
 
 ALTER TABLE [dbo].[NhanVien] SET (LOCK_ESCALATION = TABLE)
-GO
+    GO
 
 
 -- ----------------------------
 -- Records of NhanVien
 -- ----------------------------
-BEGIN TRANSACTION
+BEGIN
+TRANSACTION
 GO
 
 INSERT INTO [dbo].[NhanVien] ([ID], [Ten], [Ma], [TenDangNhap], [MatKhau], [TrangThai]) VALUES (N'1', N'Jesse Hayes', N'YD22074', N'hayes7@gmail.com', N'123456', N'1')
@@ -1353,25 +1459,40 @@ GO
 -- Table structure for SanPham
 -- ----------------------------
 IF EXISTS (SELECT * FROM sys.all_objects WHERE object_id = OBJECT_ID(N'[dbo].[SanPham]') AND type IN ('U'))
-	DROP TABLE [dbo].[SanPham]
-GO
+DROP TABLE [dbo].[SanPham]
+    GO
 
-CREATE TABLE [dbo].[SanPham] (
-  [ID] int  IDENTITY(1,1) NOT NULL,
-  [Ma] varchar(255) COLLATE SQL_Latin1_General_CP1_CI_AS  NOT NULL,
-  [Ten] varchar(255) COLLATE SQL_Latin1_General_CP1_CI_AS  NOT NULL,
-  [TrangThai] int DEFAULT 1 NOT NULL
-)
-GO
+CREATE TABLE [dbo].[SanPham]
+(
+    [
+    ID]
+    int
+    IDENTITY
+(
+    1,
+    1
+) NOT NULL,
+    [Ma] varchar
+(
+    255
+) COLLATE SQL_Latin1_General_CP1_CI_AS NOT NULL,
+    [Ten] varchar
+(
+    255
+) COLLATE SQL_Latin1_General_CP1_CI_AS NOT NULL,
+    [TrangThai] int DEFAULT 1 NOT NULL
+    )
+    GO
 
 ALTER TABLE [dbo].[SanPham] SET (LOCK_ESCALATION = TABLE)
-GO
+    GO
 
 
 -- ----------------------------
 -- Records of SanPham
 -- ----------------------------
-BEGIN TRANSACTION
+BEGIN
+TRANSACTION
 GO
 
 SET IDENTITY_INSERT [dbo].[SanPham] ON
@@ -1688,29 +1809,44 @@ GO
 -- Table structure for SanPhamChiTiet
 -- ----------------------------
 IF EXISTS (SELECT * FROM sys.all_objects WHERE object_id = OBJECT_ID(N'[dbo].[SanPhamChiTiet]') AND type IN ('U'))
-	DROP TABLE [dbo].[SanPhamChiTiet]
-GO
+DROP TABLE [dbo].[SanPhamChiTiet]
+    GO
 
-CREATE TABLE [dbo].[SanPhamChiTiet] (
-  [ID] int  IDENTITY(1,1) NOT NULL,
-  [IdMauSac] int  NOT NULL,
-  [IdKichThuoc] int  NOT NULL,
-  [IdSanPham] int  NOT NULL,
-  [MaSPCT] varchar(255) COLLATE SQL_Latin1_General_CP1_CI_AS  NOT NULL,
-  [SoLuong] int DEFAULT 0 NOT NULL,
-  [DonGia] float(53) DEFAULT 0 NOT NULL,
-  [TrangThai] int DEFAULT 1 NOT NULL
-)
-GO
+CREATE TABLE [dbo].[SanPhamChiTiet]
+(
+    [
+    ID]
+    int
+    IDENTITY
+(
+    1,
+    1
+) NOT NULL,
+    [IdMauSac] int NOT NULL,
+    [IdKichThuoc] int NOT NULL,
+    [IdSanPham] int NOT NULL,
+    [MaSPCT] varchar
+(
+    255
+) COLLATE SQL_Latin1_General_CP1_CI_AS NOT NULL,
+    [SoLuong] int DEFAULT 0 NOT NULL,
+    [DonGia] float
+(
+    53
+) DEFAULT 0 NOT NULL,
+    [TrangThai] int DEFAULT 1 NOT NULL
+    )
+    GO
 
 ALTER TABLE [dbo].[SanPhamChiTiet] SET (LOCK_ESCALATION = TABLE)
-GO
+    GO
 
 
 -- ----------------------------
 -- Records of SanPhamChiTiet
 -- ----------------------------
-BEGIN TRANSACTION
+BEGIN
+TRANSACTION
 GO
 
 SET IDENTITY_INSERT [dbo].[SanPhamChiTiet] ON
@@ -4727,98 +4863,90 @@ GO
 -- Primary Key structure for table HoaDon
 -- ----------------------------
 ALTER TABLE [dbo].[HoaDon] ADD CONSTRAINT [PK__HoaDon__3214EC27EA23F87C] PRIMARY KEY CLUSTERED ([ID])
-WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON)  
-ON [PRIMARY]
-GO
+    WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON)
+    ON [PRIMARY]
+    GO
 
 
 -- ----------------------------
 -- Primary Key structure for table HoaDonChiTiet
 -- ----------------------------
 ALTER TABLE [dbo].[HoaDonChiTiet] ADD CONSTRAINT [PK__HoaDonCh__3214EC278F14FF91] PRIMARY KEY CLUSTERED ([ID])
-WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON)  
-ON [PRIMARY]
-GO
+    WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON)
+    ON [PRIMARY]
+    GO
 
 
 -- ----------------------------
 -- Primary Key structure for table KhachHang
 -- ----------------------------
 ALTER TABLE [dbo].[KhachHang] ADD CONSTRAINT [PK__KhachHan__3214EC27886203F4] PRIMARY KEY CLUSTERED ([ID])
-WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON)  
-ON [PRIMARY]
-GO
-
-
--- ----------------------------
+    WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON)
+    ON [PRIMARY]
+    GO
+    -- ----------------------------
 -- Auto increment value for KichThuoc
 -- ----------------------------
-DBCC CHECKIDENT ('[dbo].[KichThuoc]', RESEED, 10)
-GO
+    DBCC CHECKIDENT ('[dbo].[KichThuoc]', RESEED, 10)
+    GO
 
 
 -- ----------------------------
 -- Primary Key structure for table KichThuoc
 -- ----------------------------
 ALTER TABLE [dbo].[KichThuoc] ADD CONSTRAINT [PK__KichThuo__3214EC272A187BEF] PRIMARY KEY CLUSTERED ([ID])
-WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON)  
-ON [PRIMARY]
-GO
-
-
--- ----------------------------
+    WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON)
+    ON [PRIMARY]
+    GO
+    -- ----------------------------
 -- Auto increment value for MauSac
 -- ----------------------------
-DBCC CHECKIDENT ('[dbo].[MauSac]', RESEED, 30)
-GO
+    DBCC CHECKIDENT ('[dbo].[MauSac]', RESEED, 30)
+    GO
 
 
 -- ----------------------------
 -- Primary Key structure for table MauSac
 -- ----------------------------
 ALTER TABLE [dbo].[MauSac] ADD CONSTRAINT [PK__MauSac__3214EC277CD5B85E] PRIMARY KEY CLUSTERED ([ID])
-WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON)  
-ON [PRIMARY]
-GO
+    WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON)
+    ON [PRIMARY]
+    GO
 
 
 -- ----------------------------
 -- Primary Key structure for table NhanVien
 -- ----------------------------
 ALTER TABLE [dbo].[NhanVien] ADD CONSTRAINT [PK__NhanVien__3214EC27943DC82C] PRIMARY KEY CLUSTERED ([ID])
-WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON)  
-ON [PRIMARY]
-GO
-
-
--- ----------------------------
+    WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON)
+    ON [PRIMARY]
+    GO
+    -- ----------------------------
 -- Auto increment value for SanPham
 -- ----------------------------
-DBCC CHECKIDENT ('[dbo].[SanPham]', RESEED, 100)
-GO
+    DBCC CHECKIDENT ('[dbo].[SanPham]', RESEED, 100)
+    GO
 
 
 -- ----------------------------
 -- Primary Key structure for table SanPham
 -- ----------------------------
 ALTER TABLE [dbo].[SanPham] ADD CONSTRAINT [PK__SanPham__3214EC275BEEB21E] PRIMARY KEY CLUSTERED ([ID])
-WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON)  
-ON [PRIMARY]
-GO
-
-
--- ----------------------------
+    WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON)
+    ON [PRIMARY]
+    GO
+    -- ----------------------------
 -- Auto increment value for SanPhamChiTiet
 -- ----------------------------
-DBCC CHECKIDENT ('[dbo].[SanPhamChiTiet]', RESEED, 1000)
-GO
+    DBCC CHECKIDENT ('[dbo].[SanPhamChiTiet]', RESEED, 1000)
+    GO
 
 
 -- ----------------------------
 -- Primary Key structure for table SanPhamChiTiet
 -- ----------------------------
 ALTER TABLE [dbo].[SanPhamChiTiet] ADD CONSTRAINT [PK__SanPhamC__3214EC27D0B4303A] PRIMARY KEY CLUSTERED ([ID])
-WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON)  
-ON [PRIMARY]
-GO
+    WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON)
+    ON [PRIMARY]
+    GO
 

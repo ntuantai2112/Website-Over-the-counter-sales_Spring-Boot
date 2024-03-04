@@ -47,14 +47,13 @@ public class SanPhamChiTietController {
 
 
     @GetMapping("show-product-detail")
-    public String getProductDetail(Model model,   @RequestParam("page") Optional<Integer> pageParam) {
-
+    public String getProductDetail(Model model, @RequestParam("page") Optional<Integer> pageParam) {
 
 
         int page = pageParam.orElse(0);
-        Pageable p = PageRequest.of(page,10);
-        Page<SanPhamChiTiet> pageSanPhamChiTiet= this.sanPhamChiTietRepository.findByTrangThai(this.sanPhamChiTietRepository.ACTIVE,p);
-        model.addAttribute("pageSanPhamChiTiet",pageSanPhamChiTiet);
+        Pageable p = PageRequest.of(page, 10);
+        Page<SanPhamChiTiet> pageSanPhamChiTiet = this.sanPhamChiTietRepository.findByTrangThai(this.sanPhamChiTietRepository.ACTIVE, p);
+        model.addAttribute("pageSanPhamChiTiet", pageSanPhamChiTiet);
 //        model.addAttribute("listProductDetail", sanPhamChiTietRepository.findAll());
         return "admin/san_pham_chi_tiet/showProductDetail";
     }

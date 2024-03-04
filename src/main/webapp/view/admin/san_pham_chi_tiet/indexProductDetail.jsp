@@ -46,9 +46,11 @@
                             <li><a class="dropdown-item" href="/san-pham/show-product">Manager Product</a></li>
                             <li><a class="dropdown-item" href="/nhan-vien/show-employee">Manager Employee</a></li>
                             <li><a class="dropdown-item" href="/khach-hang/show-customer">Manager Customer</a></li>
-                            <li><a class="dropdown-item" href="/san-pham-chi-tiet/show-product-detail">Manager Product Detail</a></li>
+                            <li><a class="dropdown-item" href="/san-pham-chi-tiet/show-product-detail">Manager Product
+                                Detail</a></li>
                             <li><a class="dropdown-item" href="/hoa-don/show-bill">Manager Bill</a></li>
-                            <li><a class="dropdown-item" href="/hoa-don-chi-tiet/show-billDetail">Manager Bill Detail</a></li>
+                            <li><a class="dropdown-item" href="/hoa-don-chi-tiet/show-billDetail">Manager Bill
+                                Detail</a></li>
                             <li>
                                 <hr class="dropdown-divider">
                             </li>
@@ -85,7 +87,7 @@
     <table class="table mt-5">
         <thead>
         <tr>
-                        <th scope="col">ID</th>
+            <th scope="col">ID</th>
             <th scope="col">Tên Sản Phẩm</th>
             <th scope="col">Kích Thước</th>
             <th scope="col">Màu Sắc</th>
@@ -96,20 +98,20 @@
         </tr>
         </thead>
         <tbody>
-            <tr>
-                <td>${productDetail.id}</td>
-                <td>${productDetail.idSanPham.ten}</td>
-                <td>${productDetail.idKichThuoc.ten}</td>
-                <td>${productDetail.idMauSac.ten}</td>
-                <td>${productDetail.soLuong}</td>
-                <td>${productDetail.donGia}</td>
-                <td>${productDetail.trangThai == 0 ? "Inactive" : "Active" }</td>
-                <td>
-                    <a href="/gio-hang/add-to-cart/${productDetail.id}">
-                        <button type="button" class="btn btn-info">Add To Cart</button>
-                    </a>
-                </td>
-            </tr>
+        <tr>
+            <td>${productDetail.id}</td>
+            <td>${productDetail.idSanPham.ten}</td>
+            <td>${productDetail.idKichThuoc.ten}</td>
+            <td>${productDetail.idMauSac.ten}</td>
+            <td>${productDetail.soLuong}</td>
+            <td>${productDetail.donGia}</td>
+            <td>${productDetail.trangThai == 0 ? "Inactive" : "Active" }</td>
+            <td>
+                <a href="/gio-hang/add-to-cart/${productDetail.id}">
+                    <button type="button" class="btn btn-info">Add To Cart</button>
+                </a>
+            </td>
+        </tr>
         </tbody>
     </table>
 </div>

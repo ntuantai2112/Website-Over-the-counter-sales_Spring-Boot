@@ -11,16 +11,17 @@ import java.util.Map;
 
 public interface ProductService {
 
-     Map<Integer, KichThuocDTO> getAllSize();
+    Map<Integer, KichThuocDTO> getAllSize();
 
     Map<Integer, MauSacDTO> getAllColor();
 
     List<SanPhamDTO> getAllSanPham();
 
     SanPhamDTO getSanPhamById(int id);
-    List<SanPhamChiTietDTO> getAllSanPhamChiTiet();
-    SanPhamChiTietDTO getSanPhamChiTietById(int id);
 
+    List<SanPhamChiTietDTO> getAllSanPhamChiTiet();
+
+    SanPhamChiTietDTO getSanPhamChiTietById(int id);
 
 
 }

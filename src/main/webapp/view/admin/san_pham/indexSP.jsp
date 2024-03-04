@@ -46,9 +46,11 @@
                             <li><a class="dropdown-item" href="/san-pham/show-product">Manager Product</a></li>
                             <li><a class="dropdown-item" href="/nhan-vien/show-employee">Manager Employee</a></li>
                             <li><a class="dropdown-item" href="/khach-hang/show-customer">Manager Customer</a></li>
-                            <li><a class="dropdown-item" href="/san-pham-chi-tiet/show-product-detail">Manager Product Detail</a></li>
+                            <li><a class="dropdown-item" href="/san-pham-chi-tiet/show-product-detail">Manager Product
+                                Detail</a></li>
                             <li><a class="dropdown-item" href="/hoa-don/show-bill">Manager Bill</a></li>
-                            <li><a class="dropdown-item" href="/hoa-don-chi-tiet/show-billDetail">Manager Bill Detail</a></li>
+                            <li><a class="dropdown-item" href="/hoa-don-chi-tiet/show-billDetail">Manager Bill
+                                Detail</a></li>
                             <li>
                                 <hr class="dropdown-divider">
                             </li>
@@ -108,7 +110,9 @@
                             <button type="button" class="btn btn-success">Edit</button>
                         </a>
                         <a href="/san-pham/delete-product/${sp.id}">
-                            <button type="button" class="btn btn-danger" onclick="return confirm('Are you sure you want to delete this product?')">Remove</button>
+                            <button type="button" class="btn btn-danger"
+                                    onclick="return confirm('Are you sure you want to delete this product?')">Remove
+                            </button>
                         </a>
                         <a href="/san-pham/product/${sp.id}">
                             <button type="button" class="btn btn-warning">Detail</button>
@@ -126,23 +130,24 @@
     </table>
 
 
-        <div>
-            <nav aria-label="Page navigation example">
-                <ul class="pagination">
-                    <li class="page-item">
-                        <c:if test="${pageSanPham.number > 0}">
-                            <a class="page-link" href="/san-pham/show-product?page=${pageSanPham.number - 1}">Previous</a>
-                        </c:if>
-                    </li>
-                    <li class="page-item"><a class="page-link disabled active-page" onclick="return false;"   href="#">${pageSanPham.number + 1}</a></li>
-                    <li class="page-item">
-                        <c:if test="${pageSanPham.number + 1 < pageSanPham.totalPages}">
-                            <a class="page-link" href="/san-pham/show-product?page=${pageSanPham.number + 1}">Next</a>
-                        </c:if>
-                    </li>
-                </ul>
-            </nav>
-        </div>
+    <div>
+        <nav aria-label="Page navigation example">
+            <ul class="pagination">
+                <li class="page-item">
+                    <c:if test="${pageSanPham.number > 0}">
+                        <a class="page-link" href="/san-pham/show-product?page=${pageSanPham.number - 1}">Previous</a>
+                    </c:if>
+                </li>
+                <li class="page-item"><a class="page-link disabled active-page" onclick="return false;"
+                                         href="#">${pageSanPham.number + 1}</a></li>
+                <li class="page-item">
+                    <c:if test="${pageSanPham.number + 1 < pageSanPham.totalPages}">
+                        <a class="page-link" href="/san-pham/show-product?page=${pageSanPham.number + 1}">Next</a>
+                    </c:if>
+                </li>
+            </ul>
+        </nav>
+    </div>
 </div>
 
 

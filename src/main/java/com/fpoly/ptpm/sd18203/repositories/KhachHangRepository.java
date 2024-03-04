@@ -9,12 +9,13 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public interface KhachHangRepository extends JpaRepository<KhachHang,Integer> {
+public interface KhachHangRepository extends JpaRepository<KhachHang, Integer> {
 
 
-    public static  final  int ACTIVE = 1;
-    public static  final  int INACTIVE = 0;
+    public static final int ACTIVE = 1;
+    public static final int INACTIVE = 0;
 
     public Page<KhachHang> findByTrangThai(int trangThai, Pageable pageable);
+
     Page<KhachHang> findAll(Pageable pageable);
 }

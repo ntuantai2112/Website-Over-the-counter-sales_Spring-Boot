@@ -11,9 +11,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 public class LoginController {
 
 
-
-
-
     @GetMapping("login")
     public String login() {
         return "login";
@@ -23,10 +20,10 @@ public class LoginController {
     public String loginForm(
             Model model,
             UserDTO userDTO
-       ) {
-                model.addAttribute("email", userDTO.getEmail());
-                model.addAttribute("password", userDTO.getPassword());
+    ) {
+        model.addAttribute("email", userDTO.getEmail());
+        model.addAttribute("password", userDTO.getPassword());
 
-                return "index";
+        return "index";
     }
 }

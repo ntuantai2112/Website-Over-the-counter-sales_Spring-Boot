@@ -10,8 +10,11 @@
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Edit Detail Product</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+            crossorigin="anonymous"></script>
 
 </head>
 <body>
@@ -19,7 +22,9 @@
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
         <div class="container-fluid">
             <a class="navbar-brand" href="#">Navbar</a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+                    aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
@@ -41,9 +46,11 @@
                             <li><a class="dropdown-item" href="/san-pham/show-product">Manager Product</a></li>
                             <li><a class="dropdown-item" href="/nhan-vien/show-employee">Manager Employee</a></li>
                             <li><a class="dropdown-item" href="/khach-hang/show-customer">Manager Customer</a></li>
-                            <li><a class="dropdown-item" href="/san-pham-chi-tiet/show-product-detail">Manager Product Detail</a></li>
+                            <li><a class="dropdown-item" href="/san-pham-chi-tiet/show-product-detail">Manager Product
+                                Detail</a></li>
                             <li><a class="dropdown-item" href="/hoa-don/show-bill">Manager Bill</a></li>
-                            <li><a class="dropdown-item" href="/hoa-don-chi-tiet/show-billDetail">Manager Bill Detail</a></li>
+                            <li><a class="dropdown-item" href="/hoa-don-chi-tiet/show-billDetail">Manager Bill
+                                Detail</a></li>
                             <li>
                                 <hr class="dropdown-divider">
                             </li>
@@ -68,58 +75,58 @@
 <div>
 
     <div class="container">
-        <sf:form action="/san-pham-chi-tiet/edit-product-detail/${productDetail.id}" method="post" modelAttribute="productDetail">
+        <sf:form action="/san-pham-chi-tiet/edit-product-detail/${productDetail.id}" method="post"
+                 modelAttribute="productDetail">
             <div class="mb-3">
                 <label class="form-label">ID Product Detail</label>
-                <sf:input path="id" disabled="true" type="text" class="form-control" placeholder="ID" />
+                <sf:input path="id" disabled="true" type="text" class="form-control" placeholder="ID"/>
                 <sf:errors path="id" cssStyle="color: red"></sf:errors>
             </div>
 
             <div class="mb-3">
                 <label class="form-label">Mã Sản Phẩm Chi Tiết</label>
-                <sf:input path="maSPCT" name="maSPCT" type="text" class="form-control" placeholder="Mã SPCT" />
+                <sf:input path="maSPCT" name="maSPCT" type="text" class="form-control" placeholder="Mã SPCT"/>
                 <sf:errors path="maSPCT" cssStyle="color: red"></sf:errors>
             </div>
 
             <div class="mb-3">
                 <label class="form-label">Product</label>
                 <sf:select path="idSanPham" class="form-select">
-                    <sf:options items="${productList}" itemLabel="ten" itemValue="id" />
+                    <sf:options items="${productList}" itemLabel="ten" itemValue="id"/>
                 </sf:select>
             </div>
 
             <div class="mb-3">
                 <label class="form-label">Size</label>
                 <sf:select path="idKichThuoc" class="form-select">
-                    <sf:options items="${sizeList}" itemLabel="ten" itemValue="id"  />
+                    <sf:options items="${sizeList}" itemLabel="ten" itemValue="id"/>
                 </sf:select>
             </div>
 
             <div class="mb-3">
                 <label class="form-label">Color</label>
                 <sf:select path="idMauSac" class="form-select">
-                    <sf:options items="${colorList}" itemLabel="ten" itemValue="id" />
+                    <sf:options items="${colorList}" itemLabel="ten" itemValue="id"/>
                 </sf:select>
             </div>
 
             <div class="mb-3">
                 <label class="form-label">Quantity</label>
-                <sf:input path="soLuong" type="text" class="form-control" placeholder="Quantity" />
+                <sf:input path="soLuong" type="text" class="form-control" placeholder="Quantity"/>
                 <sf:errors path="soLuong" cssStyle="color: red"></sf:errors>
             </div>
 
             <div class="mb-3">
                 <label class="form-label">Unit Price</label>
-                <sf:input path="donGia" type="text" class="form-control" placeholder="Unit Price" />
+                <sf:input path="donGia" type="text" class="form-control" placeholder="Unit Price"/>
                 <sf:errors path="donGia" cssStyle="color: red"></sf:errors>
             </div>
 
             <div class="mb-3">
                 <label class="form-label">Status</label>
-                <sf:input path="trangThai" type="text" class="form-control" placeholder="Status" />
+                <sf:input path="trangThai" type="text" class="form-control" placeholder="Status"/>
                 <sf:errors path="trangThai" cssStyle="color: red"></sf:errors>
             </div>
-
 
 
             <button type="submit" class="btn btn-primary">Submit</button>

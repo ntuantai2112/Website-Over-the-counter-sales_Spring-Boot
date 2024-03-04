@@ -41,14 +41,14 @@
 
 
                             <div class="form-outline mb-4">
-<%--                                <lable>Email</lable>--%>
+                                <%--                                <lable>Email</lable>--%>
                                 <input type="text" id="typeEmailX-2" name="email"
                                        value="" class="form-control form-control-lg"
                                        placeholder="Email"/>
                                 <%--                                <label class="text-danger">${messUserName}</label>--%>
                             </div>
                             <div class="form-outline mb-4">
-<%--                                <lable>Password</lable>--%>
+                                <%--                                <lable>Password</lable>--%>
                                 <input type="password" id="typePasswordX-2" name="password"
                                        value=""
                                        class="form-control form-control-lg" placeholder="Password"/>

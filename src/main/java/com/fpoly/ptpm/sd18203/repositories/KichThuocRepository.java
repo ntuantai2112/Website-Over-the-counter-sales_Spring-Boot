@@ -9,10 +9,12 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public interface KichThuocRepository extends JpaRepository<KichThuoc,Integer> {
+public interface KichThuocRepository extends JpaRepository<KichThuoc, Integer> {
 
-    public static  final  int ACTIVE = 1;
-    public static  final  int INACTIVE = 0;
+    public static final int ACTIVE = 1;
+    public static final int INACTIVE = 0;
+
     public Page<KichThuoc> findByTrangThai(int trangThai, Pageable pageable);
+
     Page<KichThuoc> findAll(Pageable pageable);
 }

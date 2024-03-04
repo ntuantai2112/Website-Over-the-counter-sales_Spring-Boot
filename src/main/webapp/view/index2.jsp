@@ -174,25 +174,25 @@
                                     </tr>
                                     </thead>
                                     <tbody>
-<%--                                    <c:forEach var="i" items="${listHD}" varStatus="hd">--%>
-<%--                                        <c:if test="${i.trangThai == 0}">--%>
-<%--                                            <tr>--%>
-<%--                                                <th scope="row">${hd.index}</th>--%>
-<%--                                                <td>${i.id}</td>--%>
-<%--                                                <td>--%>
-<%--                                                    <fmt:formatDate value="${i.ngayMuaHang}"--%>
-<%--                                                                    pattern="dd-MM-yyyy HH:mm:ss"/>--%>
-<%--                                                </td>--%>
-<%--                                                <td>--%>
-<%--                                                    <c:forEach var="x" items="${listNV}">--%>
-<%--                                                        <c:if test="${x.id == i.idNhanVien}">${x.ten}</c:if>--%>
-<%--                                                    </c:forEach>--%>
-<%--                                                </td>--%>
-<%--                                                <td><a class="btn btn-success" href="/ban-hang/detail/${i.id}">View</a>--%>
-<%--                                                </td>--%>
-<%--                                            </tr>--%>
-<%--                                        </c:if>--%>
-<%--                                    </c:forEach>--%>
+                                    <%--                                    <c:forEach var="i" items="${listHD}" varStatus="hd">--%>
+                                    <%--                                        <c:if test="${i.trangThai == 0}">--%>
+                                    <%--                                            <tr>--%>
+                                    <%--                                                <th scope="row">${hd.index}</th>--%>
+                                    <%--                                                <td>${i.id}</td>--%>
+                                    <%--                                                <td>--%>
+                                    <%--                                                    <fmt:formatDate value="${i.ngayMuaHang}"--%>
+                                    <%--                                                                    pattern="dd-MM-yyyy HH:mm:ss"/>--%>
+                                    <%--                                                </td>--%>
+                                    <%--                                                <td>--%>
+                                    <%--                                                    <c:forEach var="x" items="${listNV}">--%>
+                                    <%--                                                        <c:if test="${x.id == i.idNhanVien}">${x.ten}</c:if>--%>
+                                    <%--                                                    </c:forEach>--%>
+                                    <%--                                                </td>--%>
+                                    <%--                                                <td><a class="btn btn-success" href="/ban-hang/detail/${i.id}">View</a>--%>
+                                    <%--                                                </td>--%>
+                                    <%--                                            </tr>--%>
+                                    <%--                                        </c:if>--%>
+                                    <%--                                    </c:forEach>--%>
                                     </tbody>
                                 </table>
                             </div>
@@ -218,41 +218,41 @@
                                     </tr>
                                     </thead>
                                     <tbody>
-<%--                                    <c:forEach var="hdct" items="${listHDCT}" varStatus="kt">--%>
-<%--                                        <tr>--%>
-<%--                                            <th scope="row">${kt.index + 1}</th>--%>
-<%--                                            <td>--%>
-<%--                                                <c:forEach var="ctsp" items="${listCTSP}">--%>
-<%--                                                    <c:if test="${ctsp.id == hdct.idSPCT}">${ctsp.maSPCT}</c:if>--%>
-<%--                                                </c:forEach>--%>
-<%--                                            </td>--%>
-<%--                                            <td>--%>
-<%--                                                <c:forEach var="ctsp" items="${listCTSP}">--%>
-<%--                                                    <c:if test="${ctsp.id == hdct.idSPCT}">--%>
-<%--                                                        <c:forEach var="sp" items="${listSP}">--%>
-<%--                                                            <c:if test="${sp.id == ctsp.idSanPham}">${sp.ten}</c:if>--%>
-<%--                                                        </c:forEach>--%>
-<%--                                                    </c:if>--%>
-<%--                                                </c:forEach>--%>
-<%--                                            </td>--%>
-<%--                                            <td>--%>
-<%--                                               ${hdct.soLuong}--%>
-<%--                                            </td>--%>
+                                    <%--                                    <c:forEach var="hdct" items="${listHDCT}" varStatus="kt">--%>
+                                    <%--                                        <tr>--%>
+                                    <%--                                            <th scope="row">${kt.index + 1}</th>--%>
+                                    <%--                                            <td>--%>
+                                    <%--                                                <c:forEach var="ctsp" items="${listCTSP}">--%>
+                                    <%--                                                    <c:if test="${ctsp.id == hdct.idSPCT}">${ctsp.maSPCT}</c:if>--%>
+                                    <%--                                                </c:forEach>--%>
+                                    <%--                                            </td>--%>
+                                    <%--                                            <td>--%>
+                                    <%--                                                <c:forEach var="ctsp" items="${listCTSP}">--%>
+                                    <%--                                                    <c:if test="${ctsp.id == hdct.idSPCT}">--%>
+                                    <%--                                                        <c:forEach var="sp" items="${listSP}">--%>
+                                    <%--                                                            <c:if test="${sp.id == ctsp.idSanPham}">${sp.ten}</c:if>--%>
+                                    <%--                                                        </c:forEach>--%>
+                                    <%--                                                    </c:if>--%>
+                                    <%--                                                </c:forEach>--%>
+                                    <%--                                            </td>--%>
+                                    <%--                                            <td>--%>
+                                    <%--                                               ${hdct.soLuong}--%>
+                                    <%--                                            </td>--%>
 
-<%--                                            <td>${hdct.donGia}</td>--%>
-<%--                                            <td>--%>
-<%--                                                <span id="totalPrice_${hdct.idSPCT}">${hdct.soLuong * hdct.donGia}</span>--%>
-<%--                                            </td>--%>
-<%--                                            <td>--%>
-<%--                                                <form method="POST" action="/ban-hang/delete/${hdct.id}">--%>
-<%--                                                    <input type="hidden" name="idHoaDon" value="${idHoaDon}"/>--%>
-<%--                                                    <button type="submit" class="btn btn-link">--%>
-<%--                                                        <i class="bi bi-x-square-fill" style="font-size: 20px;"></i>--%>
-<%--                                                    </button>--%>
-<%--                                                </form>--%>
-<%--                                            </td>--%>
-<%--                                        </tr>--%>
-<%--                                    </c:forEach>--%>
+                                    <%--                                            <td>${hdct.donGia}</td>--%>
+                                    <%--                                            <td>--%>
+                                    <%--                                                <span id="totalPrice_${hdct.idSPCT}">${hdct.soLuong * hdct.donGia}</span>--%>
+                                    <%--                                            </td>--%>
+                                    <%--                                            <td>--%>
+                                    <%--                                                <form method="POST" action="/ban-hang/delete/${hdct.id}">--%>
+                                    <%--                                                    <input type="hidden" name="idHoaDon" value="${idHoaDon}"/>--%>
+                                    <%--                                                    <button type="submit" class="btn btn-link">--%>
+                                    <%--                                                        <i class="bi bi-x-square-fill" style="font-size: 20px;"></i>--%>
+                                    <%--                                                    </button>--%>
+                                    <%--                                                </form>--%>
+                                    <%--                                            </td>--%>
+                                    <%--                                        </tr>--%>
+                                    <%--                                    </c:forEach>--%>
                                     </tbody>
                                 </table>
                                 <!-- End GIỎ HÀNG -->
@@ -278,38 +278,38 @@
                                     </tr>
                                     </thead>
                                     <tbody>
-<%--                                    <c:forEach var="i" items="${listCTSP}" varStatus="a">--%>
-<%--                                        <tr>--%>
-<%--                                            <th scope="row">${a.index + 1}</th>--%>
-<%--                                            <td>${i.maSPCT}</td>--%>
-<%--                                            <td>--%>
-<%--                                                <c:forEach var="x" items="${listSP}">--%>
-<%--                                                    <c:if test="${x.id == i.idSanPham}">${x.ten}</c:if>--%>
-<%--                                                </c:forEach>--%>
-<%--                                            </td>--%>
-<%--                                            <td>--%>
-<%--                                                <c:forEach var="x" items="${listKT}">--%>
-<%--                                                    <c:if test="${x.id == i.idKichThuoc}">${x.ten}</c:if>--%>
-<%--                                                </c:forEach>--%>
-<%--                                            </td>--%>
-<%--                                            <td>--%>
-<%--                                                <c:forEach var="x" items="${listMS}">--%>
-<%--                                                    <c:if test="${x.id == i.idMauSac}">${x.ten}</c:if>--%>
-<%--                                                </c:forEach>--%>
-<%--                                            </td>--%>
-<%--                                            <td>${i.soLuong}</td>--%>
-<%--                                            <td>${i.donGia}</td>--%>
-<%--                                            <td>--%>
-<%--                                                <sf:form action="/ban-hang/add-hdct/${i.id}" method="POST"--%>
-<%--                                                         onsubmit="return validateBeforeAddToCart();">--%>
-<%--                                                    <input type="hidden" name="idHoaDon" value="${idHoaDon}"--%>
-<%--                                                           id="selectedInvoiceId"/>--%>
-<%--                                                    <button type="submit" class="bi bi-plus-square-fill"--%>
-<%--                                                            style="font-size: 25px; border: none; background-color: white"></button>--%>
-<%--                                                </sf:form>--%>
-<%--                                            </td>--%>
-<%--                                        </tr>--%>
-<%--                                    </c:forEach>--%>
+                                    <%--                                    <c:forEach var="i" items="${listCTSP}" varStatus="a">--%>
+                                    <%--                                        <tr>--%>
+                                    <%--                                            <th scope="row">${a.index + 1}</th>--%>
+                                    <%--                                            <td>${i.maSPCT}</td>--%>
+                                    <%--                                            <td>--%>
+                                    <%--                                                <c:forEach var="x" items="${listSP}">--%>
+                                    <%--                                                    <c:if test="${x.id == i.idSanPham}">${x.ten}</c:if>--%>
+                                    <%--                                                </c:forEach>--%>
+                                    <%--                                            </td>--%>
+                                    <%--                                            <td>--%>
+                                    <%--                                                <c:forEach var="x" items="${listKT}">--%>
+                                    <%--                                                    <c:if test="${x.id == i.idKichThuoc}">${x.ten}</c:if>--%>
+                                    <%--                                                </c:forEach>--%>
+                                    <%--                                            </td>--%>
+                                    <%--                                            <td>--%>
+                                    <%--                                                <c:forEach var="x" items="${listMS}">--%>
+                                    <%--                                                    <c:if test="${x.id == i.idMauSac}">${x.ten}</c:if>--%>
+                                    <%--                                                </c:forEach>--%>
+                                    <%--                                            </td>--%>
+                                    <%--                                            <td>${i.soLuong}</td>--%>
+                                    <%--                                            <td>${i.donGia}</td>--%>
+                                    <%--                                            <td>--%>
+                                    <%--                                                <sf:form action="/ban-hang/add-hdct/${i.id}" method="POST"--%>
+                                    <%--                                                         onsubmit="return validateBeforeAddToCart();">--%>
+                                    <%--                                                    <input type="hidden" name="idHoaDon" value="${idHoaDon}"--%>
+                                    <%--                                                           id="selectedInvoiceId"/>--%>
+                                    <%--                                                    <button type="submit" class="bi bi-plus-square-fill"--%>
+                                    <%--                                                            style="font-size: 25px; border: none; background-color: white"></button>--%>
+                                    <%--                                                </sf:form>--%>
+                                    <%--                                            </td>--%>
+                                    <%--                                        </tr>--%>
+                                    <%--                                    </c:forEach>--%>
                                     </tbody>
                                 </table>
                                 <!-- End GIỎ HÀNG -->
@@ -347,9 +347,9 @@
                                 <div class="col-sm-6">
                                     <sf:select path="idKhachHang" class="form-select "
                                                aria-label="Default select example">
-<%--                                        <c:forEach var="i" items="${listKH}">--%>
-<%--                                            <sf:option value="${i.id}">${i.sdt}</sf:option>--%>
-<%--                                        </c:forEach>--%>
+                                        <%--                                        <c:forEach var="i" items="${listKH}">--%>
+                                        <%--                                            <sf:option value="${i.id}">${i.sdt}</sf:option>--%>
+                                        <%--                                        </c:forEach>--%>
                                     </sf:select>
                                 </div>
                                 <a class="col-sm-2" data-bs-toggle="modal" data-bs-target="#exampleModal" href="#">

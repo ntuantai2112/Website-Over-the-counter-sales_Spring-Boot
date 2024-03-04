@@ -50,9 +50,11 @@
                             <li><a class="dropdown-item" href="/san-pham/show-product">Manager Product</a></li>
                             <li><a class="dropdown-item" href="/nhan-vien/show-employee">Manager Employee</a></li>
                             <li><a class="dropdown-item" href="/khach-hang/show-customer">Manager Customer</a></li>
-                            <li><a class="dropdown-item" href="/san-pham-chi-tiet/show-product-detail">Manager Product Detail</a></li>
+                            <li><a class="dropdown-item" href="/san-pham-chi-tiet/show-product-detail">Manager Product
+                                Detail</a></li>
                             <li><a class="dropdown-item" href="/hoa-don/show-bill">Manager Bill</a></li>
-                            <li><a class="dropdown-item" href="/hoa-don-chi-tiet/show-billDetail">Manager Bill Detail</a></li>
+                            <li><a class="dropdown-item" href="/hoa-don-chi-tiet/show-billDetail">Manager Bill
+                                Detail</a></li>
                             <li>
                                 <hr class="dropdown-divider">
                             </li>
@@ -96,13 +98,12 @@
             <th scope="col">Số Lượng</th>
             <th scope="col"> Đơn Giá</th>
             <th scope="col"> Thời Gian Mua Hàng</th>
-<%--            <th scope="col">Tổng Tiền</th>--%>
+            <%--            <th scope="col">Tổng Tiền</th>--%>
             <th scope="col">Trạng Thái</th>
             <th scope="col">Action</th>
         </tr>
         </thead>
         <tbody>
-
 
 
         <c:forEach var="billDetail" items="${pageHoaDonChiTiet.content}">
@@ -114,10 +115,10 @@
                 <td>${billDetail.soLuong}</td>
                 <td>${billDetail.donGia}</td>
                 <c:set var="formattedDate">
-                    <fmt:formatDate value="${billDetail.thoiGian}" pattern="dd/MM/yyyy  " />
+                    <fmt:formatDate value="${billDetail.thoiGian}" pattern="dd/MM/yyyy  "/>
                 </c:set>
                 <td>${formattedDate}</td>
-<%--                <td>${billDetail.donGia * billDetail.soLuong}</td>--%>
+                    <%--                <td>${billDetail.donGia * billDetail.soLuong}</td>--%>
                 <c:choose>
                     <c:when test="${billDetail.trangThai eq 0}">
                         <td>Chưa xử lý</td>
@@ -133,37 +134,42 @@
                     </c:otherwise>
                 </c:choose>
 
-               <td>
-                   <a href="/hoa-don-chi-tiet/edit-billDetail/${billDetail.id}">
-                       <button type="button" class="btn btn-warning">Edit</button>
-                   </a>
-                   <a href="/hoa-don-chi-tiet/delete-billDetail/${billDetail.id}">
-                       <button type="button" class="btn btn-danger" onclick="return confirm('Are you sure you want to delete this BillDetail?')">Remove</button>
-                   </a>
-               </td>
+                <td>
+                    <a href="/hoa-don-chi-tiet/edit-billDetail/${billDetail.id}">
+                        <button type="button" class="btn btn-warning">Edit</button>
+                    </a>
+                    <a href="/hoa-don-chi-tiet/delete-billDetail/${billDetail.id}">
+                        <button type="button" class="btn btn-danger"
+                                onclick="return confirm('Are you sure you want to delete this BillDetail?')">Remove
+                        </button>
+                    </a>
+                </td>
             </tr>
         </c:forEach>
 
         </tbody>
     </table>
 
-        <div>
-            <nav aria-label="Page navigation example">
-                <ul class="pagination">
-                    <li class="page-item">
-                        <c:if test="${pageHoaDonChiTiet.number > 0}">
-                            <a class="page-link" href="/hoa-don-chi-tiet/show-billDetail?page=${pageHoaDonChiTiet.number - 1}">Previous</a>
-                        </c:if>
-                    </li>
-                    <li class="page-item"><a class="page-link disabled active-page" onclick="return false;"   href="#">${pageHoaDonChiTiet.number + 1}</a></li>
-                    <li class="page-item">
-                        <c:if test="${pageHoaDonChiTiet.number + 1 < pageHoaDonChiTiet.totalPages}">
-                            <a class="page-link" href="/hoa-don-chi-tiet/show-billDetail?page=${pageHoaDonChiTiet.number + 1}">Next</a>
-                        </c:if>
-                    </li>
-                </ul>
-            </nav>
-        </div>
+    <div>
+        <nav aria-label="Page navigation example">
+            <ul class="pagination">
+                <li class="page-item">
+                    <c:if test="${pageHoaDonChiTiet.number > 0}">
+                        <a class="page-link"
+                           href="/hoa-don-chi-tiet/show-billDetail?page=${pageHoaDonChiTiet.number - 1}">Previous</a>
+                    </c:if>
+                </li>
+                <li class="page-item"><a class="page-link disabled active-page" onclick="return false;"
+                                         href="#">${pageHoaDonChiTiet.number + 1}</a></li>
+                <li class="page-item">
+                    <c:if test="${pageHoaDonChiTiet.number + 1 < pageHoaDonChiTiet.totalPages}">
+                        <a class="page-link"
+                           href="/hoa-don-chi-tiet/show-billDetail?page=${pageHoaDonChiTiet.number + 1}">Next</a>
+                    </c:if>
+                </li>
+            </ul>
+        </nav>
+    </div>
 </div>
 
 

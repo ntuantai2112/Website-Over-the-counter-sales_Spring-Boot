@@ -9,15 +9,15 @@ import org.springframework.web.filter.CharacterEncodingFilter;
 public class BeanConfig {
 
     @Bean("white")
-    public MauSacDTO mauSacBean(){
-        MauSacDTO mauSacDTO = new MauSacDTO(1,"#0000","White","Action");
+    public MauSacDTO mauSacBean() {
+        MauSacDTO mauSacDTO = new MauSacDTO(1, "#0000", "White", "Action");
         return mauSacDTO;
 
     }
 
     @Bean("red")
-    public MauSacDTO mauSacBean2(){
-        MauSacDTO mauSacDTO = new MauSacDTO(1,"#ftf","Red","Action");
+    public MauSacDTO mauSacBean2() {
+        MauSacDTO mauSacDTO = new MauSacDTO(1, "#ftf", "Red", "Action");
         return mauSacDTO;
 
     }
@@ -29,7 +29,6 @@ public class BeanConfig {
         filter.setForceEncoding(true);
         return filter;
     }
-
 
 
 }

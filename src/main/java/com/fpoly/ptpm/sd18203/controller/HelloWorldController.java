@@ -15,7 +15,7 @@ public class HelloWorldController {
 
 
     @RequestMapping("hello")
-    public String helloWord(){
+    public String helloWord() {
 
         System.out.println(mauSacDTO.getId());
         System.out.println(mauSacDTO.getMa());
@@ -23,7 +23,6 @@ public class HelloWorldController {
 
         return "index";
     }
-
 
 
 }

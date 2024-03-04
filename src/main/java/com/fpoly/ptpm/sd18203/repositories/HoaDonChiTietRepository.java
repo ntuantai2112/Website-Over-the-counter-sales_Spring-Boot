@@ -13,13 +13,14 @@ import org.springframework.stereotype.Repository;
 import java.util.List;
 
 @Repository
-public interface HoaDonChiTietRepository extends JpaRepository<HoaDonChiTiet,Integer> {
+public interface HoaDonChiTietRepository extends JpaRepository<HoaDonChiTiet, Integer> {
 
-    public static  final  int DANG_XU_LY = 1;
-    public static  final  int CHUA_XU_LY = 0;
-    public static  final  int DA_XU_LY = 2;
+    public static final int DANG_XU_LY = 1;
+    public static final int CHUA_XU_LY = 0;
+    public static final int DA_XU_LY = 2;
 
     public Page<HoaDonChiTiet> findByTrangThai(int trangThai, Pageable pageable);
+
     Page<HoaDonChiTiet> findAll(Pageable pageable);
 
     @Query("SELECT h FROM HoaDonChiTiet h WHERE h.idHoaDon.id = :idHoaDon")

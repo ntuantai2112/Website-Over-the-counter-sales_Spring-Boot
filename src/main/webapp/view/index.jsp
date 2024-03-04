@@ -1,4 +1,4 @@
-<%@ taglib prefix = "c" uri = "http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page pageEncoding="UTF-8" language="java" %>
 <!doctype html>
 <html lang="en">
@@ -10,8 +10,8 @@
     <title>Document</title>
 </head>
 <body>
-        <h1>Hell ${email}</h1>
-        <p>${email}</p>
-        <p>${password}</p>
+<h1>Hell ${email}</h1>
+<p>${email}</p>
+<p>${password}</p>
 </body>
 </html>

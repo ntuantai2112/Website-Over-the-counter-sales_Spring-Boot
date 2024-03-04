@@ -25,7 +25,6 @@ import java.util.Optional;
 public class HoaDonChiTietController {
 
 
-
     @Autowired
     private HoaDonChiTietRepository hoaDonChiTietRepository;
 
@@ -39,10 +38,9 @@ public class HoaDonChiTietController {
     private SanPhamChiTietRepository sanPhamChiTietRepository;
 
 
-
     // Xử lý lấy ra sản phẩm chi tiết
     @GetMapping("/show-billDetail")
-    public String showBillDetail( Model model, @RequestParam("page") Optional<Integer> pageParam) {
+    public String showBillDetail(Model model, @RequestParam("page") Optional<Integer> pageParam) {
 
         int page = pageParam.orElse(0);
         Pageable p = PageRequest.of(page, 10);
@@ -66,8 +64,8 @@ public class HoaDonChiTietController {
     //    Hàm xử lý thêm mới hóa đơn
     @PostMapping("/create-billDetail")
     public String createBillDetail(Model model,
-            @Valid @ModelAttribute("billDetail") HoaDonChiTietDTO req,
-            BindingResult result) {
+                                   @Valid @ModelAttribute("billDetail") HoaDonChiTietDTO req,
+                                   BindingResult result) {
 
         if (result.hasErrors()) {
             model.addAttribute("listBill", hoaDonRepository.findAll());
@@ -111,10 +109,10 @@ public class HoaDonChiTietController {
 
     @PostMapping("/update-billDetail/{id}")
     public String editBillDetail(Model model,
-            @Valid
-            @ModelAttribute("billDetail") HoaDonChiTietDTO req,
-            BindingResult result,
-            @PathVariable(name = "id") HoaDonChiTiet hoaDonChiTiet) {
+                                 @Valid
+                                 @ModelAttribute("billDetail") HoaDonChiTietDTO req,
+                                 BindingResult result,
+                                 @PathVariable(name = "id") HoaDonChiTiet hoaDonChiTiet) {
 
         if (result.hasErrors()) {
             model.addAttribute("listBill", hoaDonRepository.findAll());
@@ -138,13 +136,6 @@ public class HoaDonChiTietController {
         return "redirect:/hoa-don-chi-tiet/show-billDetail";
 
     }
-
-
-
-
-
-
-
 
 
 }

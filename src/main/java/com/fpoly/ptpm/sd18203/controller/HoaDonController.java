@@ -26,17 +26,17 @@ import java.util.Optional;
 public class HoaDonController {
 
 
-  @Autowired
-  private HoaDonRepository hoaDonRepository;
+    @Autowired
+    private HoaDonRepository hoaDonRepository;
 
-  @Autowired
-  private NhanVienRepository nhanVienRepository;
+    @Autowired
+    private NhanVienRepository nhanVienRepository;
 
-  @Autowired
-  private KhachHangRepository khachHangRepository;
+    @Autowired
+    private KhachHangRepository khachHangRepository;
 
     @GetMapping("show-bill")
-    public String showBill(Model model,   @RequestParam("page") Optional<Integer> pageParam){
+    public String showBill(Model model, @RequestParam("page") Optional<Integer> pageParam) {
 
         int page = pageParam.orElse(0);
         Pageable p = PageRequest.of(page, 10);
@@ -59,8 +59,8 @@ public class HoaDonController {
     //    Hàm xử lý thêm mới hóa đơn
     @PostMapping("/create-bill")
     public String createBill(Model model,
-            @Valid @ModelAttribute("bill") HoaDonDTO req,
-            BindingResult result) {
+                             @Valid @ModelAttribute("bill") HoaDonDTO req,
+                             BindingResult result) {
 
         if (result.hasErrors()) {
             model.addAttribute("listCustomer", khachHangRepository.findAll());
@@ -120,7 +120,7 @@ public class HoaDonController {
         }
 
 
-         KhachHang khachHang = this.khachHangRepository.findById(req.getIdKhachHang()).get();
+        KhachHang khachHang = this.khachHangRepository.findById(req.getIdKhachHang()).get();
         NhanVien nhanVien = this.nhanVienRepository.findById(req.getIdNhanVien()).get();
 
         hoaDon.setIdKhachHang(khachHang);
@@ -132,8 +132,6 @@ public class HoaDonController {
 
         return "redirect:/hoa-don/show-bill";
     }
-
-
 
 
 }

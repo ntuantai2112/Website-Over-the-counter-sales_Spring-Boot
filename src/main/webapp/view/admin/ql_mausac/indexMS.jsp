@@ -18,7 +18,7 @@
     <style>
         .active-page {
             font-weight: bold; /* hoặc bất kỳ kiểu trạng thái nổi bật nào bạn muốn */
-            color: #337ab7;    /* màu sắc nổi bật */
+            color: #337ab7; /* màu sắc nổi bật */
         }
     </style>
 </head>
@@ -52,9 +52,11 @@
                             <li><a class="dropdown-item" href="/san-pham/show-product">Manager Product</a></li>
                             <li><a class="dropdown-item" href="/nhan-vien/show-employee">Manager Employee</a></li>
                             <li><a class="dropdown-item" href="/khach-hang/show-customer">Manager Customer</a></li>
-                            <li><a class="dropdown-item" href="/san-pham-chi-tiet/show-product-detail">Manager Product Detail</a></li>
+                            <li><a class="dropdown-item" href="/san-pham-chi-tiet/show-product-detail">Manager Product
+                                Detail</a></li>
                             <li><a class="dropdown-item" href="/hoa-don/show-bill">Manager Bill</a></li>
-                            <li><a class="dropdown-item" href="/hoa-don-chi-tiet/show-billDetail">Manager Bill Detail</a></li>
+                            <li><a class="dropdown-item" href="/hoa-don-chi-tiet/show-billDetail">Manager Bill
+                                Detail</a></li>
                             <li>
                                 <hr class="dropdown-divider">
                             </li>
@@ -114,7 +116,9 @@
                             <button type="button" class="btn btn-success">Edit</button>
                         </a>
                         <a href="/mau-sac/delete-color?id=${ms.id}">
-                            <button type="button" class="btn btn-danger" onclick="return confirm('Are you sure you want to delete this color?')">Remove</button>
+                            <button type="button" class="btn btn-danger"
+                                    onclick="return confirm('Are you sure you want to delete this color?')">Remove
+                            </button>
                         </a>
                         <a href="">
                             <button type="button" class="btn btn-warning">Detail</button>
@@ -135,7 +139,8 @@
                         <a class="page-link" href="/mau-sac/store?page=${pageData.number - 1}">Previous</a>
                     </c:if>
                 </li>
-                <li class="page-item"><a class="page-link disabled active-page" onclick="return false;"   href="#">${pageData.number + 1}</a></li>
+                <li class="page-item"><a class="page-link disabled active-page" onclick="return false;"
+                                         href="#">${pageData.number + 1}</a></li>
                 <li class="page-item">
                     <c:if test="${pageData.number + 1 < pageData.totalPages}">
                         <a class="page-link" href="/mau-sac/store?page=${pageData.number + 1}">Next</a>

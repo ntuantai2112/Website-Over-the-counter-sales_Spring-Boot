@@ -12,7 +12,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 public class UserInfo {
 
-    public static int idHoaDon = - 1;
+    public static int idHoaDon = -1;
 
 
 }
